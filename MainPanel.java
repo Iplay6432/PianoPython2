@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
+import java.io.*;
 
 public class MainPanel extends JPanel {
     private int pos = 0;
@@ -55,7 +56,13 @@ public class MainPanel extends JPanel {
                 down = false;
             }
             if (e.getKeyCode() == 10) {
-                System.out.println("WOW!");
+                pos = start.getPos();
+                if (pos == 0) {
+                    try {
+                        Python.run(pos);
+                    } catch (Exception m) {
+                    }
+                }
             }
         }
 
