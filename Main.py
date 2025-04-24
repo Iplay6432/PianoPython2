@@ -37,7 +37,13 @@ class Main(pyglet.window.Window):
     def on_key_press(self, symbol, modifiers):
         if int(self.get_screen()) == 0:
             self.levels.key_pressed(symbol, modifiers)
+        elif int(list(str(self.get_screen()))[0]) == 1:
+            self.game.key_pressed(symbol, modifiers)
         print(f"{symbol}")
+    
+    def on_key_release(self, symbol, modifiers):
+        if int(list(str(self.get_screen()))[0]) == 1:
+            self.game.key_released(symbol, modifiers)
 
     def get_screen(self) -> int:
         return self.screenNumber

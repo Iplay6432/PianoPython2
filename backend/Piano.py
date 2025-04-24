@@ -1,7 +1,10 @@
 from threading import Thread
 from time import sleep, time
 import pyglet
-
+import json
+import pyglet.window.key as key
+import time
+from backend.KeyboardNote import KeyboardNote
 class PianoKeyboard:
     def __init__(self, window):
         self.window = window
@@ -15,8 +18,14 @@ class PianoKeyboard:
         White = ["C", "D", "E", "F", "G", "A", "B"]
         Black = ["Db", "Eb", "Gb", "Ab", "Bb"]
         Octive = ["3", "4", "5"]
+        self.octive  = 4
         o=0
+        with open("backend/data/keybinds.json", "r") as file:
+            self.keybinds = json.load(file)
+        print(self.keybinds)
         for i in range(self.OCTIVES * 7):  # white keys
+            if(i%7 ==0 and i != 0):
+                o +=1
             self.keys.append(KeyboardNote(
                 list(White)[i % 7] + Octive[o],
                 self.WHITE_KEY_WIDTH * i,
@@ -25,8 +34,6 @@ class PianoKeyboard:
                 self.WHITE_KEY_HEIGHT,
                 self.BORDER_WIDTH,
             ))
-            if(i%7 ==0 and i != 0):
-                o +=1
         m = 0
         for i in range(3):
             for t in range(2):
@@ -69,107 +76,22 @@ class PianoKeyboard:
         for m in self.keys:
             m.draw()
 
-    def key_pressed(key: str):
-        pass
-
-
-class FaillingNote:
-    def __init__(
-        self, note: str = "A4", time: int = 2, bpm: int = 100
-    ):  # time is in beats
-        note = list(note)
-        self.time = time
-        self.bpm = bpm
-        if len(note) == 3:
-            self.octive = note[2]
-            self.note = note[0] + note[1]
-        else:
-            self.octive = note[1]
-            self.note = note[0]
-
-    def get_note(self) -> str:
-        return self.note
-
-    def get_octive(self) -> int:
-        return self.octive
-
-    def play(self):
-        sound = pyglet.media.load(f"backend/notes/{self.note}{self.octive}.wav")
-        time = 60 / self.bpm * self.time
-        thread = Thread(
-            target=self._play,
-            args=(
-                sound,
-                time,
-            ),
-        )
-        thread.start()
-
-    def _play(self, sound: pyglet.media.load, time: int):
-        play = sound.play()
-        sleep(time)
-        play.delete()
-
-
-class KeyboardNote(pyglet.shapes.BorderedRectangle):
-    def __init__(
-        self,
-        note: str,
-        x: int,
-        y: int,
-        width: int,
-        height: int,
-        border_width: int,
-        vol=75,
-        color=(255, 255, 255),
-        border_color=(0, 0, 0),
-        anchor_x="bottom left",
-    ):
-        if anchor_x == "center":
-            x = x-width/2
-        super().__init__(
-            x,
-            y,
-            width,
-            height,
-            border=border_width,
-            color=color,
-            border_color=border_color
-        )
-
-        note = list(note)
-        self.volume = vol
-        if len(note) == 3:
-            self.octive = note[2]
-            self.note_name = note[0] + note[1]
-        else:
-            self.octive = note[1]
-            self.note_name = note[0]
-
-    def set_volume(self, vol: int):
-        self.volume = vol
-
-    def play(self):
-        sound = pyglet.media.load(
-            f"backend/notes/{self.note_name}{self.octive}.wav", streaming=False
-        )
-        self.thread = Thread(target=self._play, args=(sound,))
-        self.thread.start()
-
-    def _play(self, sound: pyglet.media.load):
-        self.plays = sound.play().volume = self.volume
-
-    def stop(self):
-        self.thread.join(timeout=0.1)
-
-    def note(self) -> str:
-        return self.note_name + self.octive
-
-
-# note = KeyboardNote("A4")
-# note.play()
-# sleep(1)
-# note.stop()
-
-note = FaillingNote()
-note.play()
+    def key_pressed(self, symbol, modifer):
+        if key.symbol_string(symbol) in self.keybinds:
+            p = self.keybinds[key.symbol_string(symbol)]
+            if p == "up":
+                if self.octive < 5:
+                    self.octive+=1
+            if p == "down" and self.octive > 3:
+                self.octive-=1
+            if p != "up" and p != "down":
+                for note in self.keys:
+                    note.is_pressed(p+str(self.octive))
+    
+    def key_released(self, symbol, modifer):
+        if key.symbol_string(symbol) in self.keybinds:
+            p = self.keybinds[key.symbol_string(symbol)]
+            if p != "up" and p != "down":
+                print("stop")
+                for note in self.keys:
+                    note.key_released(p+str(self.octive))

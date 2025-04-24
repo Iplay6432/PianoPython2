@@ -1,7 +1,8 @@
 import pyglet
 import mido
-from backend.Piano import PianoKeyboard, FaillingNote, KeyboardNote
-
+import json
+from backend.Piano import PianoKeyboard
+import pyglet.window.key as key
 
 class PianoGame:
     def __init__(self, window):
@@ -11,8 +12,9 @@ class PianoGame:
         self.p = PianoKeyboard(self.window)
 
     def key_pressed(self, symbol, modifiers):
-        pass
-
+        self.p.key_pressed(symbol, modifiers)
+    def key_released(self, symbol, modifiers):
+        self.p.key_released(symbol, modifiers)
     def start(self, level):
         self.Start = True
         self.level = level
