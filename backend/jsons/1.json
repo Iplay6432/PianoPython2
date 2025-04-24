@@ -1,0 +1,24 @@
+{
+    "bpm": 60,
+    "name": "Chord",
+    "notes": {
+      "0": {
+        "beat": 0,
+        "note": "C",
+        "octive": 4,
+        "time": 4
+      },
+      "1":{
+        "beat": 4,
+        "note": "E",
+        "octive": 4,
+        "time": 4
+      },
+      "2":{
+        "beat": 8,
+        "note": "G",
+        "octive": 4,
+        "time": 4
+      }
+    }
+  }

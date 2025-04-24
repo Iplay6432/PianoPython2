@@ -169,7 +169,7 @@ cython_debug/
 
 # Ruff stuff:
 .ruff_cache/
-
+*.sf2
 # PyPI configuration file
 .pypirc
 # Compiled class file
@@ -177,6 +177,7 @@ cython_debug/
 
 # Log file
 *.log
+*.yaml
 
 # BlueJ files
 *.ctxt
@@ -196,4 +197,5 @@ cython_debug/
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
-.vscode
+*.vscode
+*.ini
