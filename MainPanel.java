@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
-import java.io.*;
 
 public class MainPanel extends JPanel {
     private int pos = 0;

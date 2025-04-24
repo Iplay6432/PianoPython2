@@ -1,4 +1,3 @@
-import java.io.*;
 
 public class Python {
     public static void run(int screen) throws Exception {
