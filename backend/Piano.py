@@ -22,7 +22,6 @@ class PianoKeyboard:
         o=0
         with open("backend/data/keybinds.json", "r") as file:
             self.keybinds = json.load(file)
-        print(self.keybinds)
         for i in range(self.OCTIVES * 7):  # white keys
             if(i%7 ==0 and i != 0):
                 o +=1
@@ -60,7 +59,7 @@ class PianoKeyboard:
                 )
                 self.keys.append(
                     KeyboardNote(
-                        Black[m % 5]+ Octive[n],
+                        Black[m % 5]+ Octive[i],
                         temp,
                         self.WHITE_KEY_HEIGHT - self.BLACK_KEY_HEIGHT,
                         self.BLACK_KEY_WIDTH,
@@ -92,6 +91,5 @@ class PianoKeyboard:
         if key.symbol_string(symbol) in self.keybinds:
             p = self.keybinds[key.symbol_string(symbol)]
             if p != "up" and p != "down":
-                print("stop")
                 for note in self.keys:
                     note.key_released(p+str(self.octive))

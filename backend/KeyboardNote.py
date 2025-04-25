@@ -58,12 +58,10 @@ class KeyboardNote(pyglet.shapes.BorderedRectangle):
     def play(self):
         self.threads.append(PlayNote(self.sound, self.volume))
         self.threads[-1].start()
-        print(self.threads)
     def _stop(self):
         self.threads[0].stop()
         self.threads[0].join(timeout=0.1)
         self.threads.pop(0)
-        print("released")
     def stop(self):
         Thread(target=self._stop).start()
     def note(self) -> str:
@@ -91,14 +89,12 @@ class PlayNote(Thread):
         curr = time.time()
         descent_time = time.time()
         if curr-self.start_time < .3:
-            print("the short way")
             while self.player.volume > .5:
                 self.player.volume = self.logistic_curve(time.time()-descent_time, curr)
                 time.sleep(1/1000)
             self.player.pause()
             self.player.delete()
         else:
-            print("the long way") 
             while self.player.volume > .5:
                 self.player.volume = self.logistic_curve(time.time()-descent_time, curr)
                 time.sleep(1/1000)
