@@ -22,6 +22,7 @@ class PianoKeyboard:
         o=0
         with open("backend/data/keybinds.json", "r") as file:
             self.keybinds = json.load(file)
+            file.close()
         for i in range(self.OCTIVES * 7):  # white keys
             if(i%7 ==0 and i != 0):
                 o +=1

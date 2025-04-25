@@ -2,15 +2,26 @@ import pyglet
 import mido
 import json
 from backend.Piano import PianoKeyboard
+import backend.FallingNote as fn 
 import pyglet.window.key as key
-
+# top space is 1 mesures!
+# always in 4/4, may implement others later
 class PianoGame:
     def __init__(self, window):
         self.window = window
+        self.OCTIVES = 3
+        self.WHITE_KEY_WIDTH = window.width / (7 * self.OCTIVES)
+        self.BLACK_KEY_WIDTH = self.WHITE_KEY_WIDTH * 0.5
+        self.WHITE_KEY_HEIGHT = window.height / 2
+        self.BLACK_KEY_HEIGHT = self.WHITE_KEY_HEIGHT * 0.64
+        self.BORDER_WIDTH = int(window.width / 500)
+        
         self.Start = False
         self.level = 1
+        self.level_data = None
+        self.notes = []
         self.p = PianoKeyboard(self.window)
-
+        self.bpm = 0
     def key_pressed(self, symbol, modifiers):
         self.p.key_pressed(symbol, modifiers)
     def key_released(self, symbol, modifiers):
@@ -18,7 +29,25 @@ class PianoGame:
     def start(self, level):
         self.Start = True
         self.level = level
-
+        # # self, note: str, width: int, height: int, 
+        #          border_width: int,vol=75,color=(255, 255, 255),
+        #          border_color=(0, 0, 0),
+        #          anchor_x="bottom left",
+        # time: int = 2, bpm: int = 100, 
+        
+        with open (f"backend/jsons/{self.level}.json", "r") as file:
+            self.level_data = json.load(file)
+            file.close()
+        self.bpm = self.level_data["bpm"]
+        for notes in self.level_data["notes"]:
+            for time, note_list in notes.items():
+                for note in note_list:
+                    if "b" in note["note"]:
+                        temp = fn.FaillingNote(note["note"], self.window.height, self.WHITE_KEY_WIDTH, self.BORDER_WIDTH, border_color=(108,47,208), color=(137,89,217), anchor_x="center", time=note["duration"], bpm=self.bpm)
+                        self.notes.append(temp)
+                    else:
+                        temp = fn.FaillingNote(note["note"], self.window.height, self.WHITE_KEY_WIDTH, self.BORDER_WIDTH, color=(169, 217, 89), border_color=(147, 208, 47), anchor_x="bottom left", time=note["duration"], bpm=self.bpm)
+                        self.notes.append(temp)
     def draw(self):
         if self.level == -1:
             # won level, go to next level
@@ -31,6 +60,11 @@ class PianoGame:
             pass
         else:
             self.p.draw()
+        # How to get fps, for future use 
+        # self.fps_display = pyglet.window.FPSDisplay(window=self)
+        # print("FPS: ", self.fps_display.label.text)
+        # Make sure to time draw so that its once per frame, probably do it in the Main loop
+            
 
     def set_level(self, level: int):
         self.level = level

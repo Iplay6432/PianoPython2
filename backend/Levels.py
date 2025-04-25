@@ -52,6 +52,6 @@ class Levels:
             l.setColor(self.LEVEL_COLOR)
         self.levels[self.zero_order[n]].setColor((142,172,180))
     def isEnded(self):
-        return [bool(self.end), int(self.pos)]
+        return [bool(self.end), int(self.pos)+1]
         
         

@@ -28,7 +28,7 @@ class Main(pyglet.window.Window):
                 self.screenNumber = str(1) + str(end[1])
             self.levels.draw()
         elif int(list(str(self.get_screen()))[0]) == 1:
-            level = list(str(self.get_screen))[1]
+            level = list(str(self.get_screen()))[1]
             if not self.happend:
                 self.game.start(level)
                 self.happend = True
@@ -39,7 +39,6 @@ class Main(pyglet.window.Window):
             self.levels.key_pressed(symbol, modifiers)
         elif int(list(str(self.get_screen()))[0]) == 1:
             self.game.key_pressed(symbol, modifiers)
-        print(f"{symbol}")
     
     def on_key_release(self, symbol, modifiers):
         if int(list(str(self.get_screen()))[0]) == 1:
