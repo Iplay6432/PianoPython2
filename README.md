@@ -6,4 +6,5 @@ https://www.musical-artifacts.com/artifacts/3036
 
 Download JCommander jar file and put it in the same directory
 Run:
-java -cp (jarfilename).jar Main.java --screen 1
+python Main.py -s 0, use the path/name of your python 
+<!-- java -cp (jarfilename).jar Main.java --screen 1 -->
