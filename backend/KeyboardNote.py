@@ -11,7 +11,7 @@ class KeyboardNote(pyglet.shapes.BorderedRectangle):
         width: int,
         height: int,
         border_width: int,
-        vol=75,
+        vol=.5,
         color=(255, 255, 255),
         border_color=(0, 0, 0),
         anchor_x="bottom left",
@@ -42,16 +42,19 @@ class KeyboardNote(pyglet.shapes.BorderedRectangle):
         )
         self.start_time = time.time()
         self.threads = []
+        self.locked = False
     def set_volume(self, vol: int):
         self.volume = vol
         return self.volume
 
     def is_pressed(self, note : str):
-        if self.note_name+self.octive == note:
+        if self.note_name+self.octive == note and not self.locked:
+            self.locked = True
             self.color = (199,0,57)
             self.play()
     def key_released(self, note: str): 
         if self.note_name+self.octive == note:
+            self.locked = False
             self.color= self.colorr
             self.stop()
             
@@ -79,27 +82,27 @@ class PlayNote(Thread):
         self.player.queue(self.sound)
         self.player.volume = self.volume
         self.player.play()
+        self.max_vol = self.volume
         self.start_time = time.time()
     def logistic_curve(self,timee, curr):
-            return 75 / (1 + 2.718 ** (8*(timee-(curr- self.start_time))))
+            return self.max_vol / (1 + 2.718 ** (4*(timee-(curr- self.start_time))))
     def short_curve(self, timee, curr):
-        return 75 / (1 + 2.718 ** (32*(timee-(curr- self.start_time))))
+        return self.max_vol / (1 + 2.718 ** (4*(timee-(curr- self.start_time))))
 
     def stop(self):
         curr = time.time()
         descent_time = time.time()
-        if curr-self.start_time < .3:
-            while self.player.volume > .5:
+        if curr-self.start_time < .1:
+            while self.player.volume > .05:
                 self.player.volume = self.logistic_curve(time.time()-descent_time, curr)
                 time.sleep(1/1000)
             self.player.pause()
-            self.player.delete()
         else:
-            while self.player.volume > .5:
+            while self.player.volume > .05:
                 self.player.volume = self.logistic_curve(time.time()-descent_time, curr)
                 time.sleep(1/1000)
             self.player.pause()
-            self.player.delete()
+
         
 
         
