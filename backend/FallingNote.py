@@ -15,7 +15,7 @@ class FaillingNote(pyglet.shapes.BorderedRectangle):
         x = 0
         y = height
         self.screen_height = height
-        height = durr * ((height/2)/bpm)
+        height = durr * ((height/2)/bpm)*4
         with open("backend/data/note_pos.json", "r") as file:
             data = json.load(file)
             x = (data[note]-1)*width
@@ -66,7 +66,7 @@ class FaillingNote(pyglet.shapes.BorderedRectangle):
         return self.time
     def dy(self, fps, beat): #runs every frame at 60fps
         if self.y > self.screen_height/2 - self.height and beat >= self.time:
-            self.y -= ((self.screen_height/2)/float(fps))/16
+            self.y -= ((self.screen_height/2)/float(fps))/4
             if not self.played and self.y <= self.screen_height/2:
                 self.play()
                 self.played = True

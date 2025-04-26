@@ -48,10 +48,20 @@ class KeyboardNote(pyglet.shapes.BorderedRectangle):
         return self.volume
 
     def is_pressed(self, note : str):
+        if len(note) == 3:
+            octive = note[2]
+            name = note[0] + note[1]
+        else:
+            octive = note[1]
+            name = note[0]
         if self.note_name+self.octive == note and not self.locked:
             self.locked = True
             self.color = (199,0,57)
             self.play()
+        elif octive != self.octive and name == self.note_name:
+            self.locked = False
+            self.color = self.colorr
+            self.stop()
     def key_released(self, note: str): 
         if self.note_name+self.octive == note:
             self.locked = False
@@ -62,6 +72,8 @@ class KeyboardNote(pyglet.shapes.BorderedRectangle):
         self.threads.append(PlayNote(self.sound, self.volume))
         self.threads[-1].start()
     def _stop(self):
+        if len(self.threads) == 0:
+            return
         self.threads[0].stop()
         self.threads[0].join(timeout=0.1)
         self.threads.pop(0)
