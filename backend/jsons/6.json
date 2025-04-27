@@ -489,11 +489,6 @@
           "duration": 0.5
         },
         {
-          "note": "G3",
-          "time": 13.5,
-          "duration": 0.5
-        },
-        {
           "note": "C5",
           "time": 13.5,
           "duration": 0.5
@@ -511,11 +506,6 @@
           "duration": 0.5
         },
         {
-          "note": "G3",
-          "time": 14.0,
-          "duration": 0.5
-        },
-        {
           "note": "C5",
           "time": 14.0,
           "duration": 0.5
@@ -529,11 +519,6 @@
         },
         {
           "note": "F4",
-          "time": 14.5,
-          "duration": 0.5
-        },
-        {
-          "note": "G3",
           "time": 14.5,
           "duration": 0.5
         },
