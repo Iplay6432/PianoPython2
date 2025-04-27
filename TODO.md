@@ -7,9 +7,11 @@ A spiritual successor to PianoPython using a different library and also using ja
 - [ ] Better UI design?
 ### Python
 - [ ] Score Handling
-- [ ] Implement user data with the level screen
+- [ ] Revamp Levels Screen
+    - [ ] Add Hints for each level
     - [ ] Add starts for completion with how well player did
     - [ ] Add the names for each level
+    - [ ] Add dificulty
 
 ### Java
 - [ ] Settings Menu

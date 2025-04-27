@@ -200,3 +200,4 @@ replay_pid*
 *.vscode
 *.ini
 /songmaker
+PianoRoll.py

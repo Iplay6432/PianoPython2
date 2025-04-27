@@ -10,7 +10,7 @@ class FaillingNote(pyglet.shapes.BorderedRectangle):
                  border_width: int,vol=50,color=(255, 255, 255),
                  border_color=(0, 0, 0),
                  anchor_x="bottom left",
-        durr: int = 2, bpm: int = 100, time: int = 2):  # time is in beats
+        durr: float = 2, bpm: int = 100, time: float = 2):  # time is in beats
         
         x = 0
         y = height

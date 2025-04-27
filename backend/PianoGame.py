@@ -68,9 +68,11 @@ class PianoGame:
             for note in self.notes:
                 note.dy(self.fps_display.label.text, self.beat)
                 note.draw()
-            if t.time() - self.last_beat > 60/self.bpm:
-                self.beat += 1
-                self.last_beat = t.time()
+                
+            self.beat= (t.time()- self.last_beat)*(self.bpm/60)
+            # if t.time() - self.last_beat > 60/self.bpm:
+            #     self.beat += 1
+            #     self.last_beat = t.time()
             self.p.draw()
         # How to get fps, for future use 
         # self.fps_display = pyglet.window.FPSDisplay(window=self)
