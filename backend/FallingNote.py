@@ -40,6 +40,7 @@ class FaillingNote(pyglet.shapes.BorderedRectangle):
         self.durr = durr
         self.bpm = bpm
         self.played = False
+        self.done = False
         if len(note) == 3:
             self.octive = note[2]
             self.note = note[0] + note[1]
@@ -74,7 +75,7 @@ class FaillingNote(pyglet.shapes.BorderedRectangle):
                 self.played = True
                 self.done = True
                 return self.played
-        elif self.y <= self.screen_height/2 - self.screen_height and self.done:
+        elif self.done:
                 self.done = False
                 return False
     def play(self):
@@ -100,6 +101,7 @@ class FaillingNote(pyglet.shapes.BorderedRectangle):
         # while self.player.volume > .5:
         #     self.player.volume = self.logistic_curve(time)
         self.player.pause()
+        # self.done = 
         
     def logistic_curve(self,timee):
         return 75 / (1 + 2.718 ** (8*(timee-(timee/2))))

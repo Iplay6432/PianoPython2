@@ -62,6 +62,7 @@ class PianoGame:
                     else:
                         temp = fn.FaillingNote(note["note"], self.window.height, self.WHITE_KEY_WIDTH, self.BORDER_WIDTH, color=(169, 217, 89), border_color=(73, 104, 24), anchor_x="bottom left", time=note["time"], durr=note["duration"], bpm=self.bpm)
                         self.notes.append(temp)
+        self.end_beat = self.notes[-1].get_time()
         self.game_note_times = []
         self.user_note_times = []
         
@@ -80,8 +81,9 @@ class PianoGame:
         self.last_beat = t.time()
     def draw(self):
         if self.level == -1:
-            # go back
-            pass
+            for n in self.user_note_times:
+                pass
+            return True
         elif self.level == -2:
             # beat game, go to credits or rickroll or smt idk
             pass
@@ -92,12 +94,14 @@ class PianoGame:
                 if value != None:
                     if value == True:
                         note.start_time = t.time()
-                    else:
+                    elif value == False:
                         temp = [note.start_time, t.time()]
-                        self.game_note_times[self.note_pos.index(note.get_note())].append(temp)
+                        self.game_note_times[self.note_pos.index(note.get_note()+ note.get_octive())].append(temp)
                 note.draw()
                 
             self.beat= (t.time()- self.last_beat)*(self.bpm/60)
             self.p.draw()
+            if self.beat > 8 + self.end_beat and self.level != 8:
+                self.level = -1
     def set_level(self, level: int):
         self.level = level
