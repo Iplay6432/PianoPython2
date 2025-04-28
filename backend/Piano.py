@@ -87,6 +87,7 @@ class PianoKeyboard:
             if p != "up" and p != "down":
                 for note in self.keys:
                     note.is_pressed(p+str(self.octive))
+                return p +str(self.octive)
     
     def key_released(self, symbol, modifer):
         if key.symbol_string(symbol) in self.keybinds:

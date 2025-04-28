@@ -15,8 +15,7 @@ class PianoGame:
         self.BLACK_KEY_WIDTH = self.WHITE_KEY_WIDTH * 0.5
         self.WHITE_KEY_HEIGHT = window.height / 2
         self.BLACK_KEY_HEIGHT = self.WHITE_KEY_HEIGHT * 0.64
-        self.BORDER_WIDTH = int(window.width / 500)
-        
+        self.BORDER_WIDTH = int(window.width / 500)   
         self.Start = False
         self.level = 1
         self.level_data = None
@@ -34,9 +33,13 @@ class PianoGame:
         self.Start = False
         self.notes = []
     def key_pressed(self, symbol, modifiers):
-        self.p.key_pressed(symbol, modifiers)
+        note = self.p.key_pressed(symbol, modifiers)
+        if note != None:
+            self.user_note_times[self.note_pos.index(note)] = ([t.time(), t.time() +1])
     def key_released(self, symbol, modifiers):
-        self.p.key_released(symbol, modifiers)
+        note = self.p.key_released(symbol, modifiers)
+        if note != None:
+            self.user_note_times[self.note_pos.index(note)][1] = t.time()
     def start(self, level):
         self.Start = True
         self.level = level
@@ -59,21 +62,39 @@ class PianoGame:
                     else:
                         temp = fn.FaillingNote(note["note"], self.window.height, self.WHITE_KEY_WIDTH, self.BORDER_WIDTH, color=(169, 217, 89), border_color=(73, 104, 24), anchor_x="bottom left", time=note["time"], durr=note["duration"], bpm=self.bpm)
                         self.notes.append(temp)
+        self.game_note_times = []
+        self.user_note_times = []
+        
+        with open("backend/data/note_pos.json", "r") as file:
+            self.note_pos = json.load(file)
+            self.note_pos = list(self.note_pos.items())
+            file.close()
+        temp = []
+        for item in self.note_pos:
+            temp.append(item[0])
+        self.note_pos = temp
+        for i in range(36):
+            self.game_note_times.append([])
+            self.user_note_times.append([])
+            
         self.last_beat = t.time()
     def draw(self):
         if self.level == -1:
-            # won level, go to next level
+            # go back
             pass
         elif self.level == -2:
-            # lost level go to next
-            pass
-        elif self.level == -3:
             # beat game, go to credits or rickroll or smt idk
             pass
         else:
             pyglet.shapes.Rectangle(0, 0, self.window.width, self.window.height, color=(225, 123, 136)).draw()
             for note in self.notes:
-                note.dy(self.fps_display.label.text, self.beat)
+                value =note.dy(self.fps_display.label.text, self.beat)
+                if value != None:
+                    if value == True:
+                        note.start_time = t.time()
+                    else:
+                        temp = [note.start_time, t.time()]
+                        self.game_note_times[self.note_pos.index(note.get_note())].append(temp)
                 note.draw()
                 
             self.beat= (t.time()- self.last_beat)*(self.bpm/60)

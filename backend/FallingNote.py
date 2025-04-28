@@ -64,12 +64,19 @@ class FaillingNote(pyglet.shapes.BorderedRectangle):
         return self.pos
     def get_time(self) -> int:
         return self.time
+    def get_durr(self) -> int:
+        return self.durr
     def dy(self, fps, beat): #runs every frame at 60fps
         if self.y > self.screen_height/2 - self.height and beat >= self.time:
             self.y -= ((self.screen_height/2)/float(fps))/4
             if not self.played and self.y <= self.screen_height/2:
                 self.play()
                 self.played = True
+                self.done = True
+                return self.played
+        elif self.y <= self.screen_height/2 - self.screen_height and self.done:
+                self.done = False
+                return False
     def play(self):
         sound = pyglet.media.load(f"backend/notes/{self.note}{self.octive}.wav")
         durr = 60 / self.bpm * self.durr
