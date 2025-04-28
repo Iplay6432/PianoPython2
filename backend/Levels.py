@@ -29,7 +29,9 @@ class Levels:
                              size=self.LEVEL_SIZE)
                 self.levels.append(temp)
                 m+=1   
-        self.select(self.pos) 
+        self.select(self.pos)
+    def reset(self):
+        self.end = False
     def key_pressed(self, symbol, modifiers):
         if(symbol == 65363):
             self.pos = self.pos + 1 if self.pos < self.LEVELS_PER_PAGE -1 else self.pos

@@ -38,8 +38,13 @@ class Main(pyglet.window.Window):
         if int(self.get_screen()) == 0:
             self.levels.key_pressed(symbol, modifiers)
         elif int(list(str(self.get_screen()))[0]) == 1:
-            self.game.key_pressed(symbol, modifiers)
-    
+            if symbol != 65307: #65307 = esc
+                self.game.key_pressed(symbol, modifiers)
+            else:
+                self.game.stop()
+                self.levels.reset()
+                self.happend = False
+                self.screenNumber = 0    
     def on_key_release(self, symbol, modifiers):
         if int(list(str(self.get_screen()))[0]) == 1:
             self.game.key_released(symbol, modifiers)

@@ -6,7 +6,7 @@ A spiritual successor to PianoPython using a different library and also using ja
 - [ ] Add all songs for the levels (2/8)  
 - [ ] Better UI design?
 ### Python
-- [ ] Add exit button
+- [x] Add exit key
 - [ ] After finishing a level, brings you to a screen saying play again or go to homescreen
 - [ ] During each level has a progression bar at the top
 - [ ] Homescreen has back button/key (esc) to go back to java portion

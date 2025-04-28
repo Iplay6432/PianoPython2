@@ -26,6 +26,13 @@ class PianoGame:
         self.fps_display = pyglet.window.FPSDisplay(window=self.window)
         self.beat = 0
         self.last_beat = 0
+    def stop(self):
+        self.beat = 0
+        self.level = 1
+        self.level_data = None
+        self.bpm = 0
+        self.Start = False
+        self.notes = []
     def key_pressed(self, symbol, modifiers):
         self.p.key_pressed(symbol, modifiers)
     def key_released(self, symbol, modifiers):
@@ -70,15 +77,6 @@ class PianoGame:
                 note.draw()
                 
             self.beat= (t.time()- self.last_beat)*(self.bpm/60)
-            # if t.time() - self.last_beat > 60/self.bpm:
-            #     self.beat += 1
-            #     self.last_beat = t.time()
             self.p.draw()
-        # How to get fps, for future use 
-        # self.fps_display = pyglet.window.FPSDisplay(window=self)
-        # print("FPS: ", self.fps_display.label.text)
-        # Make sure to time draw so that its once per frame, probably do it in the Main loop
-            
-
     def set_level(self, level: int):
         self.level = level
