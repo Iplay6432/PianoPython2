@@ -5,6 +5,7 @@ from backend.Piano import PianoKeyboard
 import backend.FallingNote as fn 
 import pyglet.window.key as key
 import time as t
+from number_line import NumberLine
 # top space is 1 mesures!
 # always in 4/4, may implement others later
 class PianoGame:
@@ -35,11 +36,11 @@ class PianoGame:
     def key_pressed(self, symbol, modifiers):
         note = self.p.key_pressed(symbol, modifiers)
         if note != None:
-            self.user_note_times[self.note_pos.index(note)] = ([t.time(), t.time() +1])
+            self.user_note_times[self.note_pos.index(note)].append(([t.time(), t.time() +1]))
     def key_released(self, symbol, modifiers):
         note = self.p.key_released(symbol, modifiers)
         if note != None:
-            self.user_note_times[self.note_pos.index(note)][1] = t.time()
+            self.user_note_times[self.note_pos.index(note)][-1][1] = t.time()
     def start(self, level):
         self.Start = True
         self.level = level
@@ -79,10 +80,38 @@ class PianoGame:
             self.user_note_times.append([])
             
         self.last_beat = t.time()
+    def get_score(self, user, game, index): 
+        closest = 0
+        if user[index] == []:
+            return 0
+        for i in range(len(user[index])):
+            distance = abs(user[index][i][0]-game[0])
+            last_distance =abs(user[index][closest][0] -game[0])
+            if distance <= last_distance:
+                closest = i
+        score = ((abs(user[index][closest][0] - game[0]) +abs(user[index][closest][1] - game[1])))
+        if score > 1:
+            return 0
+        return 1- score
     def draw(self):
         if self.level == -1:
-            for n in self.user_note_times:
-                pass
+            scores = []
+            i = 0
+            dist = 0
+            for n in self.game_note_times:
+                for note in n:
+                    dist+= note[1]-note[0]
+                    scores.append(self.get_score(self.user_note_times, note, i))
+                i+=1
+            temp = dist/i
+            total = 0
+            print(scores)
+            for score in scores:
+                total += score
+            score = ((total/len(scores))/temp)
+            score = 1 if score > 1 else score
+            print("Score: ", score)
+            t.sleep(10)
             return True
         elif self.level == -2:
             # beat game, go to credits or rickroll or smt idk

@@ -8,14 +8,14 @@ A spiritual successor to PianoPython using a different library and also using ja
 ### Python
 - [x] Add exit key
 - [ ] Homescreen has back button/key (esc) to go back to java portion
-- [ ] Score Handling
+- [x] Score Handling
     - [x] Record times of all Keyboard Presses
     - [x] Record times of all Falling notes Playing
-    - [ ] Compare % overlap
-    - [ ] Do it at end of level
+    - [x] Compare % overlap
+    - [x] Do it at end of level
 - [ ] Revamp Levels Screen
     - [ ] Add Hints for each level
-    - [ ] Add starts for completion with how well player did
+    - [ ] Add stats for completion with how well player did
     - [ ] Add the names for each level
     - [ ] Add difficulty
 
