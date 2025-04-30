@@ -44,12 +44,6 @@ class PianoGame:
     def start(self, level):
         self.Start = True
         self.level = level
-        # # self, note: str, width: int, height: int, 
-        #          border_width: int,vol=75,color=(255, 255, 255),
-        #          border_color=(0, 0, 0),
-        #          anchor_x="bottom left",
-        # time: int = 2, bpm: int = 100, 
-        
         with open (f"backend/jsons/{self.level}.json", "r") as file:
             self.level_data = json.load(file)
             file.close()
@@ -111,7 +105,6 @@ class PianoGame:
             score = ((total/len(scores))/temp)
             score = 1 if score > 1 else score
             print("Score: ", score)
-            t.sleep(10)
             return True
         elif self.level == -2:
             # beat game, go to credits or rickroll or smt idk

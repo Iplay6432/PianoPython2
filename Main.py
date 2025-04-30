@@ -32,8 +32,12 @@ class Main(pyglet.window.Window):
             if not self.happend:
                 self.game.start(level)
                 self.happend = True
-            self.game.draw()
-
+            temp = self.game.draw()
+            if temp == True:
+                self.game.stop()
+                self.levels.reset()
+                self.happend = False
+                self.screenNumber = 0 
     def on_key_press(self, symbol, modifiers):
         if int(self.get_screen()) == 0:
             self.levels.key_pressed(symbol, modifiers)
