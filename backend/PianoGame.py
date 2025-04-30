@@ -105,6 +105,22 @@ class PianoGame:
             score = ((total/len(scores))/temp)
             score = 1 if score > 1 else score
             print("Score: ", score)
+            data: json
+            with open("backend/data/data.json", "r") as f:
+                data = json.load(f)
+                f.close()
+            if self.og_level in data["levels"]:
+                if data["levels"][str(self.og_level)]["accuracy"] < score:
+                    data["levels"][str(self.og_level)]["done"] =1
+                    data["levels"][str(self.og_level)]["accuracy"] = score
+            else:
+                # implement later
+                new_data = {str(self.og_level):{"done": score, "accuracy": score}}
+                data["levels"][self.og_level] = new_data
+            print(data)
+            with open ("backend/data/data.json", "w") as f:
+                json.dump(data,f)
+                f.close()
             return True
         elif self.level == -2:
             # beat game, go to credits or rickroll or smt idk
@@ -124,6 +140,7 @@ class PianoGame:
             self.beat= (t.time()- self.last_beat)*(self.bpm/60)
             self.p.draw()
             if self.beat > 8 + self.end_beat and self.level != 8:
+                self.og_level = self.level
                 self.level = -1
     def set_level(self, level: int):
         self.level = level
