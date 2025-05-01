@@ -53,10 +53,6 @@ class PianoGame:
         for notes in self.level_data["notes"]:
             for time, note_list in notes.items():
                 for note in note_list:
-                    print(note)
-                    print(note["note"])
-                    print(note["time"])
-                    print(note["duration"])
                     if "b" in note["note"]:
                         temp = fn.FaillingNote(note["note"], self.window.height, self.WHITE_KEY_WIDTH, self.BORDER_WIDTH, border_color=(65,29,124), color=(137,89,217), anchor_x="center", time=note["time"], durr=note["duration"], bpm=self.bpm)
                         self.notes.append(temp)
@@ -102,12 +98,10 @@ class PianoGame:
                     scores.append(self.get_score(self.user_note_times, note, i))
                 i+=1
             total = 0
-            print(scores)
             for score in scores:
                 total += score
             score = ((total/len(scores)))
             score = 1 if score > 1 else score
-            print("Score: ", score)
             data: json
             with open("backend/data/data.json", "r") as f:
                 data = json.load(f)
@@ -120,7 +114,6 @@ class PianoGame:
                 # implement later
                 new_data = {"done": 1, "accuracy": score}
                 data["levels"][self.og_level] = new_data
-            print(data)
             with open ("backend/data/data.json", "w") as f:
                 json.dump(data,f)
                 f.close()
