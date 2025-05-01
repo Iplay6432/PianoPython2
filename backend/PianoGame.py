@@ -88,7 +88,7 @@ class PianoGame:
             last_distance =abs(user[index][closest][0] -game[0])
             if distance <= last_distance:
                 closest = i
-        score = ((abs(user[index][closest][0] - game[0]) +abs(user[index][closest][1] - game[1])))
+        score = ((abs(user[index][closest][0] - game[0]) +abs(user[index][closest][1] - game[1])))/ abs(game[1]-game[0])
         if score > 1:
             return 0
         return 1- score
@@ -99,15 +99,13 @@ class PianoGame:
             dist = 0
             for n in self.game_note_times:
                 for note in n:
-                    dist+= note[1]-note[0]
                     scores.append(self.get_score(self.user_note_times, note, i))
                 i+=1
-            temp = dist/i
             total = 0
             print(scores)
             for score in scores:
                 total += score
-            score = ((total/len(scores))/temp)
+            score = ((total/len(scores)))
             score = 1 if score > 1 else score
             print("Score: ", score)
             data: json

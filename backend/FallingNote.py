@@ -15,13 +15,10 @@ class FaillingNote(pyglet.shapes.BorderedRectangle):
         
         x = 0
         y = height
-        print(height)
         self.screen_height = height
         self.pixel_per_beat = self.screen_height / 8.0
         visual_height = float(durr) *self.pixel_per_beat
-    
-        print(durr)
-        print(height)
+        
         with open("backend/data/note_pos.json", "r") as file:
             data = json.load(file)
             x = (data[note]-1)*width
@@ -83,11 +80,9 @@ class FaillingNote(pyglet.shapes.BorderedRectangle):
                 self.play()
                 self.played = True
                 self.done = True
-                print("played" + str(self.note) + str(self.octive))
                 return self.played
         elif self.done:
                 self.done = False
-                print("done" + str(self.note) + str(self.octive))
                 return False
     def play(self):
         sound = pyglet.media.load(f"backend/notes/{self.note}{self.octive}.wav")

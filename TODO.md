@@ -3,7 +3,7 @@ A spiritual successor to PianoPython using a different library and also using ja
 
 ### General
 - [ ] Integrate Python and Java programs
-- [ ] Add all songs for the levels (2/8)  
+- [ ] Add all songs for the levels (3/8)  
 - [ ] Better UI design?
 ### Python
 - [x] Add exit key
