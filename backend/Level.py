@@ -1,6 +1,6 @@
 from pyglet import shapes, text
 import pyglet
-
+import json
 class Level:    
     def __init__(self, level: int, x: float, y:float , radius: float, size: float):
         self.color = (255,255,255)
@@ -10,14 +10,50 @@ class Level:
         self.x = x
         self.y = y
         self.border_width = 4
+        self.text_color =(0,0,0)
+        with open(f"backend/jsons/{self.level}.json", "r") as f:
+           data = json.load(f)
+           self.level_name =  data["name"]
+           f.close()
+        best_score = "Not Played Yet"
+        with open("backend/data/data.json", "r") as f:
+            data = json.load(f)
+            if self.level in data["levels"]:
+                best_score = str(round(data["levels"][self.level]["accuracy"]*100, 1)) + "%"
+            f.close()
+        self.title = text.Label(self.level_name, font_name="Times New Roman", font_size=self.px_to_pt((7/8 * 1/16*size)), x = x + size/2, y = y + size*15/16, anchor_x="center", anchor_y="center", color = self.text_color)
+        self.score1 = text.Label("Best Score:", font_name="Times New Roman", font_size=self.px_to_pt(size*7/8*1/8*1/2), x=x+size/2, y=y+size*3/16, anchor_x="center", color = self.text_color)
+        self.score2 = text.Label(str(best_score), font_name="Times New Roman", font_size=self.px_to_pt(size*7/8*1/8*1/2), x=x+size/2, y=y+size*3/32, anchor_x="center", anchor_y="center",color = self.text_color)
+        # self.name = text.Label(self.level, font_name="Times New Roman", font_size=self.px_to_pt(7/8* 1/4*size),x =x+1/2*size, y = y + size*5/8, anchor_x="center", anchor_y="center", color = self.text_color)
         self.rect1 = shapes.RoundedRectangle(x,y,self.LEVEL_SIZE,self.LEVEL_SIZE, radius=self.radius, color=(0,0,0))
         self.rect2 = shapes.RoundedRectangle(x+self.border_width,y+self.border_width, self.LEVEL_SIZE-2*self.border_width,self.LEVEL_SIZE-2*self.border_width, radius= self.radius-1, color=self.color)
-        self.text_color =(0,0,0)
+        self.label = pyglet.text.Label(self.level, font_name="Times New Roman", font_size=self.px_to_pt(size*7/8*3/8), x = self.x + size/2, y = self.y + size*11/16,anchor_x="center", anchor_y="center", color = self.text_color)
+    def update(self):
+        with open(f"backend/jsons/{self.level}.json", "r") as f:
+           data = json.load(f)
+           self.level_name =  data["name"]
+           f.close()
+        best_score = "Not Played Yet"
+        with open("backend/data/data.json", "r") as f:
+            data = json.load(f)
+            if self.level in data["levels"]:
+                best_score = str(round(data["levels"][self.level]["accuracy"]*100, 1)) + "%"
+            f.close()
+        size = self.LEVEL_SIZE
+        x = self.x
+        y= self.y
+        self.title = text.Label(self.level_name, font_name="Times New Roman", font_size=self.px_to_pt((7/8 * 1/16*size)), x = x + size/2, y = y + size*15/16, anchor_x="center", anchor_y="center", color = self.text_color)
+        self.score1 = text.Label("Best Score:", font_name="Times New Roman", font_size=self.px_to_pt(size*7/8*1/8*1/2), x=x+size/2, y=y+size*3/16, anchor_x="center", color = self.text_color)
+        self.score2 = text.Label(str(best_score), font_name="Times New Roman", font_size=self.px_to_pt(size*7/8*1/8*1/2), x=x+size/2, y=y+size*3/32, anchor_x="center", anchor_y="center",color = self.text_color)
+        self.rect1 = shapes.RoundedRectangle(x,y,self.LEVEL_SIZE,self.LEVEL_SIZE, radius=self.radius, color=(0,0,0))
+        self.rect2 = shapes.RoundedRectangle(x+self.border_width,y+self.border_width, self.LEVEL_SIZE-2*self.border_width,self.LEVEL_SIZE-2*self.border_width, radius= self.radius-1, color=self.color)
+        self.label = pyglet.text.Label(self.level, font_name="Times New Roman", font_size=self.px_to_pt(size*7/8*3/8), x = self.x + size/2, y = self.y + size*11/16,anchor_x="center", anchor_y="center", color = self.text_color)
     def px_to_pt(self, px, dpi=96) -> int:
         return int(px * 72 / dpi)    
+    def getObjects(self):
+        return [self.rect1, self.rect2, self.title, self.score1, self.score2, self.label]
     def getText(self) -> text.Label:
-        label = pyglet.text.Label(self.level, font_name="Times New Roman", font_size=self.px_to_pt(self.LEVEL_SIZE/5), x = self.x +self.LEVEL_SIZE/2, y = self.y + self.LEVEL_SIZE/2,anchor_x="center", anchor_y="center", color = self.text_color)
-        return label
+        return self.label
     def getRect(self) -> tuple[shapes.RoundedRectangle, shapes.RoundedRectangle]:
         return self.rect1, self.rect2
     def isClicked(self, mx, my) -> bool:

@@ -26,6 +26,7 @@ class PianoGame:
         self.fps_display = pyglet.window.FPSDisplay(window=self.window)
         self.beat = 0
         self.last_beat = 0
+        self.notes_done = 0
     def stop(self):
         self.beat = 0
         self.level = 1
@@ -33,6 +34,7 @@ class PianoGame:
         self.bpm = 0
         self.Start = False
         self.notes = []
+        self.notes_done = 0
     def key_pressed(self, symbol, modifiers):
         note = self.p.key_pressed(symbol, modifiers)
         if note != None:
@@ -51,13 +53,16 @@ class PianoGame:
         for notes in self.level_data["notes"]:
             for time, note_list in notes.items():
                 for note in note_list:
+                    print(note)
+                    print(note["note"])
+                    print(note["time"])
+                    print(note["duration"])
                     if "b" in note["note"]:
                         temp = fn.FaillingNote(note["note"], self.window.height, self.WHITE_KEY_WIDTH, self.BORDER_WIDTH, border_color=(65,29,124), color=(137,89,217), anchor_x="center", time=note["time"], durr=note["duration"], bpm=self.bpm)
                         self.notes.append(temp)
                     else:
                         temp = fn.FaillingNote(note["note"], self.window.height, self.WHITE_KEY_WIDTH, self.BORDER_WIDTH, color=(169, 217, 89), border_color=(73, 104, 24), anchor_x="bottom left", time=note["time"], durr=note["duration"], bpm=self.bpm)
                         self.notes.append(temp)
-        self.end_beat = self.notes[-1].get_time()
         self.game_note_times = []
         self.user_note_times = []
         
@@ -115,7 +120,7 @@ class PianoGame:
                     data["levels"][str(self.og_level)]["accuracy"] = score
             else:
                 # implement later
-                new_data = {str(self.og_level):{"done": score, "accuracy": score}}
+                new_data = {"done": 1, "accuracy": score}
                 data["levels"][self.og_level] = new_data
             print(data)
             with open ("backend/data/data.json", "w") as f:
@@ -134,12 +139,14 @@ class PianoGame:
                         note.start_time = t.time()
                     elif value == False:
                         temp = [note.start_time, t.time()]
+                        self.notes_done += 1
                         self.game_note_times[self.note_pos.index(note.get_note()+ note.get_octive())].append(temp)
                 note.draw()
                 
             self.beat= (t.time()- self.last_beat)*(self.bpm/60)
             self.p.draw()
-            if self.beat > 8 + self.end_beat and self.level != 8:
+            if self.notes_done == len(self.notes):
+                t.sleep(1)
                 self.og_level = self.level
                 self.level = -1
     def set_level(self, level: int):

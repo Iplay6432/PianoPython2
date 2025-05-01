@@ -4,9 +4,10 @@ import time as t
 import pyglet
 import json
 import random
-# top space is 1 mesures! all in 4/4 may implement others later
+# top space i
+# s 1 mesures! all in 4/4 may implement others later
 class FaillingNote(pyglet.shapes.BorderedRectangle):
-    def __init__(self, note: str, height: int, width: int,
+    def __init__(self, note: str, height: float, width: int,
                  border_width: int,vol=50,color=(255, 255, 255),
                  border_color=(0, 0, 0),
                  anchor_x="bottom left",
@@ -14,8 +15,13 @@ class FaillingNote(pyglet.shapes.BorderedRectangle):
         
         x = 0
         y = height
+        print(height)
         self.screen_height = height
-        height = durr * ((height/2)/bpm)*4
+        self.pixel_per_beat = self.screen_height / 8.0
+        visual_height = float(durr) *self.pixel_per_beat
+    
+        print(durr)
+        print(height)
         with open("backend/data/note_pos.json", "r") as file:
             data = json.load(file)
             x = (data[note]-1)*width
@@ -29,7 +35,7 @@ class FaillingNote(pyglet.shapes.BorderedRectangle):
             x,
             y,
             width,
-            height,
+            visual_height,
             border=border_width,
             color=color,
             border_color=border_color
@@ -48,6 +54,7 @@ class FaillingNote(pyglet.shapes.BorderedRectangle):
             self.octive = note[1]
             self.note = note[0]
         self.player = pyglet.media.Player()
+        self.speed_pixels_per_seccond = self.pixel_per_beat * (self.bpm / 60.0)
     def get_note(self) -> str:
         return self.note
 
@@ -69,14 +76,18 @@ class FaillingNote(pyglet.shapes.BorderedRectangle):
         return self.durr
     def dy(self, fps, beat): #runs every frame at 60fps
         if self.y > self.screen_height/2 - self.height and beat >= self.time:
-            self.y -= ((self.screen_height/2)/float(fps))/4
+            pixels_per_frame = self.speed_pixels_per_seccond / float(fps)
+            # self.y -= ((self.screen_height/2)/float(fps))/4
+            self.y -= pixels_per_frame
             if not self.played and self.y <= self.screen_height/2:
                 self.play()
                 self.played = True
                 self.done = True
+                print("played" + str(self.note) + str(self.octive))
                 return self.played
         elif self.done:
                 self.done = False
+                print("done" + str(self.note) + str(self.octive))
                 return False
     def play(self):
         sound = pyglet.media.load(f"backend/notes/{self.note}{self.octive}.wav")

@@ -1,5 +1,5 @@
 {
-  "bpm": 95,
+  "bpm": 100,
   "name": "Audiovent",
   "notes": [
     {
@@ -20,23 +20,6 @@
           "duration": 0.5
         }
       ],
-      "1.0": [
-        {
-          "note": "C4",
-          "time": 1.0,
-          "duration": 0.5
-        },
-        {
-          "note": "G4",
-          "time": 1.0,
-          "duration": 0.5
-        },
-        {
-          "note": "Bb4",
-          "time": 1.0,
-          "duration": 0.5
-        }
-      ],
       "0.5": [
         {
           "note": "C4",
@@ -51,6 +34,23 @@
         {
           "note": "Bb4",
           "time": 0.5,
+          "duration": 0.5
+        }
+      ],
+      "1.0": [
+        {
+          "note": "C4",
+          "time": 1.0,
+          "duration": 0.5
+        },
+        {
+          "note": "G4",
+          "time": 1.0,
+          "duration": 0.5
+        },
+        {
+          "note": "Bb4",
+          "time": 1.0,
           "duration": 0.5
         }
       ],
@@ -88,23 +88,6 @@
           "duration": 0.5
         }
       ],
-      "3.0": [
-        {
-          "note": "C4",
-          "time": 3.0,
-          "duration": 0.5
-        },
-        {
-          "note": "G4",
-          "time": 3.0,
-          "duration": 0.5
-        },
-        {
-          "note": "Bb4",
-          "time": 3.0,
-          "duration": 0.5
-        }
-      ],
       "2.5": [
         {
           "note": "C4",
@@ -119,6 +102,23 @@
         {
           "note": "Bb4",
           "time": 2.5,
+          "duration": 0.5
+        }
+      ],
+      "3.0": [
+        {
+          "note": "C4",
+          "time": 3.0,
+          "duration": 0.5
+        },
+        {
+          "note": "G4",
+          "time": 3.0,
+          "duration": 0.5
+        },
+        {
+          "note": "Bb4",
+          "time": 3.0,
           "duration": 0.5
         }
       ],
@@ -139,23 +139,6 @@
           "duration": 0.5
         }
       ],
-      "4.5": [
-        {
-          "note": "Bb3",
-          "time": 4.5,
-          "duration": 0.5
-        },
-        {
-          "note": "G4",
-          "time": 4.5,
-          "duration": 0.5
-        },
-        {
-          "note": "Eb4",
-          "time": 4.5,
-          "duration": 0.5
-        }
-      ],
       "4.0": [
         {
           "note": "Bb3",
@@ -170,6 +153,23 @@
         {
           "note": "G4",
           "time": 4.0,
+          "duration": 0.5
+        }
+      ],
+      "4.5": [
+        {
+          "note": "Bb3",
+          "time": 4.5,
+          "duration": 0.5
+        },
+        {
+          "note": "G4",
+          "time": 4.5,
+          "duration": 0.5
+        },
+        {
+          "note": "Eb4",
+          "time": 4.5,
           "duration": 0.5
         }
       ],
@@ -224,23 +224,6 @@
           "duration": 0.5
         }
       ],
-      "7.0": [
-        {
-          "note": "G4",
-          "time": 7.0,
-          "duration": 0.5
-        },
-        {
-          "note": "Bb3",
-          "time": 7.0,
-          "duration": 0.5
-        },
-        {
-          "note": "Eb4",
-          "time": 7.0,
-          "duration": 0.5
-        }
-      ],
       "6.5": [
         {
           "note": "G4",
@@ -255,6 +238,23 @@
         {
           "note": "Eb4",
           "time": 6.5,
+          "duration": 0.5
+        }
+      ],
+      "7.0": [
+        {
+          "note": "G4",
+          "time": 7.0,
+          "duration": 0.5
+        },
+        {
+          "note": "Bb3",
+          "time": 7.0,
+          "duration": 0.5
+        },
+        {
+          "note": "Eb4",
+          "time": 7.0,
           "duration": 0.5
         }
       ],
@@ -292,23 +292,6 @@
           "duration": 0.5
         }
       ],
-      "9.0": [
-        {
-          "note": "Ab3",
-          "time": 9.0,
-          "duration": 0.5
-        },
-        {
-          "note": "Eb4",
-          "time": 9.0,
-          "duration": 0.5
-        },
-        {
-          "note": "G4",
-          "time": 9.0,
-          "duration": 0.5
-        }
-      ],
       "8.5": [
         {
           "note": "Ab3",
@@ -323,6 +306,23 @@
         {
           "note": "G4",
           "time": 8.5,
+          "duration": 0.5
+        }
+      ],
+      "9.0": [
+        {
+          "note": "Ab3",
+          "time": 9.0,
+          "duration": 0.5
+        },
+        {
+          "note": "Eb4",
+          "time": 9.0,
+          "duration": 0.5
+        },
+        {
+          "note": "G4",
+          "time": 9.0,
           "duration": 0.5
         }
       ],
@@ -411,28 +411,6 @@
           "duration": 0.5
         }
       ],
-      "12.5": [
-        {
-          "note": "B4",
-          "time": 12.5,
-          "duration": 0.5
-        },
-        {
-          "note": "D4",
-          "time": 12.5,
-          "duration": 0.5
-        },
-        {
-          "note": "F4",
-          "time": 12.5,
-          "duration": 0.5
-        },
-        {
-          "note": "G3",
-          "time": 12.5,
-          "duration": 0.5
-        }
-      ],
       "12.0": [
         {
           "note": "B4",
@@ -452,6 +430,28 @@
         {
           "note": "G3",
           "time": 12.0,
+          "duration": 0.5
+        }
+      ],
+      "12.5": [
+        {
+          "note": "B4",
+          "time": 12.5,
+          "duration": 0.5
+        },
+        {
+          "note": "D4",
+          "time": 12.5,
+          "duration": 0.5
+        },
+        {
+          "note": "F4",
+          "time": 12.5,
+          "duration": 0.5
+        },
+        {
+          "note": "G3",
+          "time": 12.5,
           "duration": 0.5
         }
       ],
@@ -552,13 +552,6 @@
           "duration": 0.25
         }
       ],
-      "16.75": [
-        {
-          "note": "D5",
-          "time": 16.75,
-          "duration": 0.25
-        }
-      ],
       "16.25": [
         {
           "note": "D5",
@@ -570,6 +563,13 @@
         {
           "note": "Eb5",
           "time": 16.5,
+          "duration": 0.25
+        }
+      ],
+      "16.75": [
+        {
+          "note": "D5",
+          "time": 16.75,
           "duration": 0.25
         }
       ],
@@ -685,6 +685,13 @@
           "duration": 0.25
         }
       ],
+      "21.0": [
+        {
+          "note": "G5",
+          "time": 21.0,
+          "duration": 0.25
+        }
+      ],
       "21.25": [
         {
           "note": "D5",
@@ -706,6 +713,13 @@
           "duration": 0.25
         }
       ],
+      "22.0": [
+        {
+          "note": "Eb5",
+          "time": 22.0,
+          "duration": 0.25
+        }
+      ],
       "22.25": [
         {
           "note": "D5",
@@ -724,20 +738,6 @@
         {
           "note": "D5",
           "time": 22.75,
-          "duration": 0.25
-        }
-      ],
-      "21.0": [
-        {
-          "note": "G5",
-          "time": 21.0,
-          "duration": 0.25
-        }
-      ],
-      "22.0": [
-        {
-          "note": "Eb5",
-          "time": 22.0,
           "duration": 0.25
         }
       ],
@@ -1042,11 +1042,11 @@
           "duration": 2.5
         }
       ],
-      "51.0": [
+      "48.0": [
         {
-          "note": "Bb5",
-          "time": 51.0,
-          "duration": 1.0
+          "note": "G5",
+          "time": 48.0,
+          "duration": 1.5
         }
       ],
       "49.5": [
@@ -1056,11 +1056,11 @@
           "duration": 1.5
         }
       ],
-      "48.0": [
+      "51.0": [
         {
-          "note": "G5",
-          "time": 48.0,
-          "duration": 1.5
+          "note": "Bb5",
+          "time": 51.0,
+          "duration": 1.0
         }
       ],
       "52.0": [
@@ -1091,6 +1091,13 @@
           "duration": 0.5
         }
       ],
+      "57.5": [
+        {
+          "note": "Eb5",
+          "time": 57.5,
+          "duration": 2.5
+        }
+      ],
       "60.0": [
         {
           "note": "D5",
@@ -1102,13 +1109,6 @@
         {
           "note": "C5",
           "time": 61.5,
-          "duration": 2.5
-        }
-      ],
-      "57.5": [
-        {
-          "note": "Eb5",
-          "time": 57.5,
           "duration": 2.5
         }
       ]

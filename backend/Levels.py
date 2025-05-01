@@ -32,6 +32,8 @@ class Levels:
         self.select(self.pos)
     def reset(self):
         self.end = False
+        for l in self.levels:
+            l.update()
     def key_pressed(self, symbol, modifiers):
         if(symbol == 65363):
             self.pos = self.pos + 1 if self.pos < self.LEVELS_PER_PAGE -1 else self.pos
@@ -45,10 +47,13 @@ class Levels:
         shapes.Rectangle(0,0, self.window.width, self.window.height, color=(255,255,255)).draw()
         
         for l in self.levels:
-            r = l.getRect()
-            r[0].draw()
-            r[1].draw()
-            l.getText().draw()
+            objects = l.getObjects()
+            for r in objects:
+                r.draw()
+            # r = l.getRect()
+            # r[0].draw()
+            # r[1].draw()
+            # l.getText().draw()
     def select(self, n: int):
         for l in self.levels:
             l.setColor(self.LEVEL_COLOR)
