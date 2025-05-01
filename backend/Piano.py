@@ -77,21 +77,33 @@ class PianoKeyboard:
             m.draw()
 
     def key_pressed(self, symbol, modifer):
-        if key.symbol_string(symbol) in self.keybinds:
-            p = self.keybinds[key.symbol_string(symbol)]
+        if key.symbol_string(symbol).replace("_", "") in self.keybinds:
+            p = self.keybinds[key.symbol_string(symbol).replace("_", "")]
             if p == "up":
                 if self.octive < 5:
                     self.octive+=1
             if p == "down" and self.octive > 3:
                 self.octive-=1
-            if p != "up" and p != "down":
+            if "*" in p:
+                if self.octive ==3:
+                    note.is_pressed(p.replace("*", str(self.octive +1)))
+                else:
+                    for note in self.keys:
+                        note.is_pressed(p.replace("*", str(self.octive -1)))
+            elif p != "up" and p != "down":
                 for note in self.keys:
                     note.is_pressed(p+str(self.octive))
                 return p +str(self.octive)
     
     def key_released(self, symbol, modifer):
-        if key.symbol_string(symbol) in self.keybinds:
-            p = self.keybinds[key.symbol_string(symbol)]
-            if p != "up" and p != "down":
+        if key.symbol_string(symbol).replace("_", "") in self.keybinds:
+            p = self.keybinds[key.symbol_string(symbol).replace("_", "")]
+            if "*" in p:
+                if self.octive ==3:
+                    note.key_released(p.replace("*", str(self.octive +1)))
+                else:
+                    for note in self.keys:
+                        note.key_released(p.replace("*", str(self.octive -1)))
+            elif p != "up" and p != "down":
                 for note in self.keys:
                     note.key_released(p+str(self.octive))

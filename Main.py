@@ -36,6 +36,10 @@ class Main(pyglet.window.Window):
             if temp == True:
                 self.game.stop()
                 self.levels.reset()
+                del self.game
+                del self.levels
+                self.levels = Levels(self)
+                self.game = PianoGame(self)
                 self.happend = False
                 self.screenNumber = 0 
     def on_key_press(self, symbol, modifiers):
@@ -47,6 +51,10 @@ class Main(pyglet.window.Window):
             else:
                 self.game.stop()
                 self.levels.reset()
+                del self.game
+                del self.levels
+                self.levels = Levels(self)
+                self.game = PianoGame(self)
                 self.happend = False
                 self.screenNumber = 0    
     def on_key_release(self, symbol, modifiers):

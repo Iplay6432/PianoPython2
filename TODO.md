@@ -15,9 +15,8 @@ A spiritual successor to PianoPython using a different library and also using ja
     - [x] Do it at end of level
 - [ ] Revamp Levels Screen
     - [ ] Add Hints for each level
-    - [ ] Add stats for completion with how well player did
-    - [ ] Add the names for each level
-    - [ ] Add difficulty
+    - [x] Add stats for completion with how well player did
+    - [x] Add the names for each level
 
 ### Java
 - [ ] Settings Menu

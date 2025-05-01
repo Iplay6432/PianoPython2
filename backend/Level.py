@@ -11,16 +11,25 @@ class Level:
         self.y = y
         self.border_width = 4
         self.text_color =(0,0,0)
+        self.stars = [None,None,None,None,None]
         with open(f"backend/jsons/{self.level}.json", "r") as f:
            data = json.load(f)
            self.level_name =  data["name"]
            f.close()
         best_score = "Not Played Yet"
+        score =0
         with open("backend/data/data.json", "r") as f:
             data = json.load(f)
             if self.level in data["levels"]:
+                score=data["levels"][self.level]["accuracy"]
                 best_score = str(round(data["levels"][self.level]["accuracy"]*100, 1)) + "%"
             f.close()
+        if best_score != "Not Played Yet":
+            num_of_stars = int(float(score)*100/20)
+            if float(score)*100 > 95:
+                num_of_stars = 5
+            for i in range(num_of_stars):
+                self.stars[i] = shapes.Star(x+(1/8)*size + (3/4)/5*size*i + 1/16*size, y +3/8*size,1/16*size, 1/32*size, 5,55 ,color=(0,0,0))
         self.title = text.Label(self.level_name, font_name="Times New Roman", font_size=self.px_to_pt((7/8 * 1/16*size)), x = x + size/2, y = y + size*15/16, anchor_x="center", anchor_y="center", color = self.text_color)
         self.score1 = text.Label("Best Score:", font_name="Times New Roman", font_size=self.px_to_pt(size*7/8*1/8*1/2), x=x+size/2, y=y+size*3/16, anchor_x="center", color = self.text_color)
         self.score2 = text.Label(str(best_score), font_name="Times New Roman", font_size=self.px_to_pt(size*7/8*1/8*1/2), x=x+size/2, y=y+size*3/32, anchor_x="center", anchor_y="center",color = self.text_color)
@@ -34,14 +43,24 @@ class Level:
            self.level_name =  data["name"]
            f.close()
         best_score = "Not Played Yet"
+        score = 0
+        x = self.x
+        y= self.y
+        size = self.LEVEL_SIZE
         with open("backend/data/data.json", "r") as f:
             data = json.load(f)
             if self.level in data["levels"]:
+                score =data["levels"][self.level]["accuracy"]
                 best_score = str(round(data["levels"][self.level]["accuracy"]*100, 1)) + "%"
             f.close()
+        if best_score != "Not Played Yet":
+            num_of_stars = 0
+            self.stars = [None,None,None,None,None]
+            if float(score)*100 > 95:
+                num_of_stars = 5
+            for i in range(num_of_stars):
+                self.stars[i] = (shapes.Star(x+(1/8)*size + (3/4)/5*size*i + 1/16*size, y +3/8*size,1/16*size, 1/32*size, 5,55 ,color=(0,0,0),))
         size = self.LEVEL_SIZE
-        x = self.x
-        y= self.y
         self.title = text.Label(self.level_name, font_name="Times New Roman", font_size=self.px_to_pt((7/8 * 1/16*size)), x = x + size/2, y = y + size*15/16, anchor_x="center", anchor_y="center", color = self.text_color)
         self.score1 = text.Label("Best Score:", font_name="Times New Roman", font_size=self.px_to_pt(size*7/8*1/8*1/2), x=x+size/2, y=y+size*3/16, anchor_x="center", color = self.text_color)
         self.score2 = text.Label(str(best_score), font_name="Times New Roman", font_size=self.px_to_pt(size*7/8*1/8*1/2), x=x+size/2, y=y+size*3/32, anchor_x="center", anchor_y="center",color = self.text_color)
@@ -52,6 +71,8 @@ class Level:
         return int(px * 72 / dpi)    
     def getObjects(self):
         return [self.rect1, self.rect2, self.title, self.score1, self.score2, self.label]
+    def getStars(self):
+        return self.stars
     def getText(self) -> text.Label:
         return self.label
     def getRect(self) -> tuple[shapes.RoundedRectangle, shapes.RoundedRectangle]:

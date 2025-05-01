@@ -50,6 +50,10 @@ class Levels:
             objects = l.getObjects()
             for r in objects:
                 r.draw()
+            stars = l.getStars()
+            for n in stars:
+                if n != None:
+                    n.draw()
             # r = l.getRect()
             # r[0].draw()
             # r[1].draw()
