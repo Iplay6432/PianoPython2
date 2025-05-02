@@ -54,10 +54,6 @@ class Levels:
             for n in stars:
                 if n != None:
                     n.draw()
-            # r = l.getRect()
-            # r[0].draw()
-            # r[1].draw()
-            # l.getText().draw()
     def select(self, n: int):
         for l in self.levels:
             l.setColor(self.LEVEL_COLOR)

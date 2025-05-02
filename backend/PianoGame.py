@@ -82,9 +82,10 @@ class PianoGame:
         for i in range(len(user[index])):
             distance = abs(user[index][i][0]-game[0])
             last_distance =abs(user[index][closest][0] -game[0])
-            if distance <= last_distance:
+            if distance < last_distance:
                 closest = i
-        score = ((abs(user[index][closest][0] - game[0]) +abs(user[index][closest][1] - game[1])))/ abs(game[1]-game[0])
+        score = (abs(user[index][closest][0] - game[0]) +abs(user[index][closest][1] - game[1]))/ (abs(game[1]-game[0]))
+        print(score)
         if score > 1:
             return 0
         return 1- score

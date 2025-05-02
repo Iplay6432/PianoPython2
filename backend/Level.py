@@ -33,7 +33,6 @@ class Level:
         self.title = text.Label(self.level_name, font_name="Times New Roman", font_size=self.px_to_pt((7/8 * 1/16*size)), x = x + size/2, y = y + size*15/16, anchor_x="center", anchor_y="center", color = self.text_color)
         self.score1 = text.Label("Best Score:", font_name="Times New Roman", font_size=self.px_to_pt(size*7/8*1/8*1/2), x=x+size/2, y=y+size*3/16, anchor_x="center", color = self.text_color)
         self.score2 = text.Label(str(best_score), font_name="Times New Roman", font_size=self.px_to_pt(size*7/8*1/8*1/2), x=x+size/2, y=y+size*3/32, anchor_x="center", anchor_y="center",color = self.text_color)
-        # self.name = text.Label(self.level, font_name="Times New Roman", font_size=self.px_to_pt(7/8* 1/4*size),x =x+1/2*size, y = y + size*5/8, anchor_x="center", anchor_y="center", color = self.text_color)
         self.rect1 = shapes.RoundedRectangle(x,y,self.LEVEL_SIZE,self.LEVEL_SIZE, radius=self.radius, color=(0,0,0))
         self.rect2 = shapes.RoundedRectangle(x+self.border_width,y+self.border_width, self.LEVEL_SIZE-2*self.border_width,self.LEVEL_SIZE-2*self.border_width, radius= self.radius-1, color=self.color)
         self.label = pyglet.text.Label(self.level, font_name="Times New Roman", font_size=self.px_to_pt(size*7/8*3/8), x = self.x + size/2, y = self.y + size*11/16,anchor_x="center", anchor_y="center", color = self.text_color)

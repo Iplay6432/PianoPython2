@@ -19,6 +19,7 @@ class PianoKeyboard:
         Black = ["Db", "Eb", "Gb", "Ab", "Bb"]
         Octive = ["3", "4", "5"]
         self.octive  = 4
+        self.last_octive = 3 
         o=0
         with open("backend/data/keybinds.json", "r") as file:
             self.keybinds = json.load(file)
@@ -81,8 +82,10 @@ class PianoKeyboard:
             p = self.keybinds[key.symbol_string(symbol).replace("_", "")]
             if p == "up":
                 if self.octive < 5:
+                    self.last_octive =self.octive
                     self.octive+=1
             if p == "down" and self.octive > 3:
+                self.last_octive = self.octive
                 self.octive-=1
             if "*" in p:
                 if self.octive ==3:
@@ -101,9 +104,12 @@ class PianoKeyboard:
             if "*" in p:
                 if self.octive ==3:
                     note.key_released(p.replace("*", str(self.octive +1)))
+                    note.key_released(p+str(self.last_octive))
                 else:
                     for note in self.keys:
                         note.key_released(p.replace("*", str(self.octive -1)))
+                        note.key_released(p+str(self.last_octive))
             elif p != "up" and p != "down":
                 for note in self.keys:
                     note.key_released(p+str(self.octive))
+                    note.key_released(p+str(self.last_octive))

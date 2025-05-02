@@ -1,6 +1,7 @@
 {
     "bpm": 60,
     "name": "Chord",
+    "hint": "I wonder what typing s,f, or g does? I also wonder if the space key or the left alt change the octive",
     "notes": [{
       "0": [{
         "note": "C4",
