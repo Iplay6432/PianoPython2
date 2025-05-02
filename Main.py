@@ -33,6 +33,8 @@ class Main(pyglet.window.Window):
                 self.game.start(level)
                 self.happend = True
             if self.game.draw() == True:
+                self.game = None
+                self.levels = None
                 del self.game
                 del self.levels
                 print("reset")
