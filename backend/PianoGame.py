@@ -37,15 +37,17 @@ class PianoGame:
         self.notes_done = 0
     def key_pressed(self, symbol, modifiers):
         note = self.p.key_pressed(symbol, modifiers)
-        if note != None:
-            self.user_note_times[self.note_pos.index(note)].append(([t.time(), t.time() +1]))
+        if note in self.note_pos:
+            self.user_note_times[self.note_pos.index(note)].append(([t.time(), t.time()+1]))
     def key_released(self, symbol, modifiers):
         note = self.p.key_released(symbol, modifiers)
-        if note != None:
-            self.user_note_times[self.note_pos.index(note)][-1][1] = t.time()
+        if note in self.note_pos:
+            index = self.note_pos.index(note)
+            self.user_note_times[index][-1][1] = t.time()
     def start(self, level):
         self.Start = True
         self.level = level
+        self.done = False
         with open (f"backend/jsons/{self.level}.json", "r") as file:
             self.level_data = json.load(file)
             file.close()
@@ -84,8 +86,7 @@ class PianoGame:
             last_distance =abs(user[index][closest][0] -game[0])
             if distance < last_distance:
                 closest = i
-        score = (abs(user[index][closest][0] - game[0]) +abs(user[index][closest][1] - game[1]))/ (abs(game[1]-game[0]))
-        print(score)
+        score = (abs(user[index][closest][0] - game[0]) +abs(user[index][closest][1] - game[1]))/ (game[1]-game[0])
         if score > 1:
             return 0
         return 1- score
@@ -138,8 +139,12 @@ class PianoGame:
             self.beat= (t.time()- self.last_beat)*(self.bpm/60)
             self.p.draw()
             if self.notes_done == len(self.notes):
-                t.sleep(1)
-                self.og_level = self.level
-                self.level = -1
+                if not self.done:
+                    self.done = True
+                    self.end_time = t.time()
+                if t.time() - self.end_time > 1:
+                    self.og_level = self.level
+                    self.level = -1
+                    pyglet.shapes.Rectangle(0, 0, self.window.width, self.window.height, color=(255, 255, 255)).draw()
     def set_level(self, level: int):
         self.level = level

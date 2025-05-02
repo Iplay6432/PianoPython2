@@ -32,12 +32,10 @@ class Main(pyglet.window.Window):
             if not self.happend:
                 self.game.start(level)
                 self.happend = True
-            temp = self.game.draw()
-            if temp == True:
-                self.game.stop()
-                self.levels.reset()
+            if self.game.draw() == True:
                 del self.game
                 del self.levels
+                print("reset")
                 self.levels = Levels(self)
                 self.game = PianoGame(self)
                 self.happend = False
@@ -49,8 +47,6 @@ class Main(pyglet.window.Window):
             if symbol != 65307: #65307 = esc
                 self.game.key_pressed(symbol, modifiers)
             else:
-                self.game.stop()
-                self.levels.reset()
                 del self.game
                 del self.levels
                 self.levels = Levels(self)

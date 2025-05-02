@@ -55,7 +55,7 @@ class Level:
         if best_score != "Not Played Yet":
             num_of_stars = 0
             self.stars = [None,None,None,None,None]
-            if float(score)*100 > 95:
+            if float(score)*100 >= 99:
                 num_of_stars = 5
             for i in range(num_of_stars):
                 self.stars[i] = (shapes.Star(x+(1/8)*size + (3/4)/5*size*i + 1/16*size, y +3/8*size,1/16*size, 1/32*size, 5,55 ,color=(0,0,0),))

@@ -89,10 +89,13 @@ class PianoKeyboard:
                 self.octive-=1
             if "*" in p:
                 if self.octive ==3:
-                    note.is_pressed(p.replace("*", str(self.octive +1)))
+                    for note in self.keys:
+                        note.is_pressed(p.replace("*", str(self.octive +1)))
+                    return p.replace("*", str(self.octive +1))
                 else:
                     for note in self.keys:
                         note.is_pressed(p.replace("*", str(self.octive -1)))
+                    return p.replace("*", str(self.octive -1))
             elif p != "up" and p != "down":
                 for note in self.keys:
                     note.is_pressed(p+str(self.octive))
@@ -103,13 +106,17 @@ class PianoKeyboard:
             p = self.keybinds[key.symbol_string(symbol).replace("_", "")]
             if "*" in p:
                 if self.octive ==3:
-                    note.key_released(p.replace("*", str(self.octive +1)))
-                    note.key_released(p+str(self.last_octive))
+                    for note in self.keys:
+                        note.key_released(p.replace("*", str(self.octive +1)))
+                        note.key_released(p+str(self.last_octive))
+                    return p.replace("*", str(self.octive +1))
                 else:
                     for note in self.keys:
                         note.key_released(p.replace("*", str(self.octive -1)))
                         note.key_released(p+str(self.last_octive))
+                    return p.replace("*", str(self.octive -1))
             elif p != "up" and p != "down":
                 for note in self.keys:
                     note.key_released(p+str(self.octive))
                     note.key_released(p+str(self.last_octive))
+                return p +str(self.octive)
