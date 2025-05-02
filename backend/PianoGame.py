@@ -113,7 +113,6 @@ class PianoGame:
                     data["levels"][str(self.og_level)]["done"] =1
                     data["levels"][str(self.og_level)]["accuracy"] = score
             else:
-                # implement later
                 new_data = {"done": 1, "accuracy": score}
                 data["levels"][self.og_level] = new_data
             with open ("backend/data/data.json", "w") as f:
