@@ -1,6 +1,7 @@
 {
   "bpm": 100,
   "name": "Audiovent",
+  "hint": "A challange, You can play multiple notes at ounce, maybe trying to use the bottom note to play some of the chords... Especially the last one.",
   "notes": [
     {
       "0.0": [

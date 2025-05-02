@@ -119,7 +119,7 @@ class PianoGame:
             with open ("backend/data/data.json", "w") as f:
                 json.dump(data,f)
                 f.close()
-            return True
+            return (True, str(round(score*100, 1)) + "%")
         elif self.level == -2:
             # beat game, go to credits or rickroll or smt idk
             pass
@@ -146,5 +146,6 @@ class PianoGame:
                     self.og_level = self.level
                     self.level = -1
                     pyglet.shapes.Rectangle(0, 0, self.window.width, self.window.height, color=(255, 255, 255)).draw()
+            return (False, 0)
     def set_level(self, level: int):
         self.level = level

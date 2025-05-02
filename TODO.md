@@ -13,8 +13,8 @@ A spiritual successor to PianoPython using a different library and also using ja
     - [x] Record times of all Falling notes Playing
     - [x] Compare % overlap
     - [x] Do it at end of level
-- [ ] Revamp Levels Screen
-    - [ ] Add Hints for each level
+- [x] Revamp Levels Screen
+    - [x] Add Hints for each level
     - [x] Add stats for completion with how well player did
     - [x] Add the names for each level
 

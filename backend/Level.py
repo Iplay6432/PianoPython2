@@ -12,8 +12,10 @@ class Level:
         self.border_width = 4
         self.text_color =(0,0,0)
         self.stars = [None,None,None,None,None]
+        self.hint = "Oh well, No hint for you!"
         with open(f"backend/jsons/{self.level}.json", "r") as f:
            data = json.load(f)
+           self.hint = data["hint"]
            self.level_name =  data["name"]
            f.close()
         best_score = "Not Played Yet"
@@ -36,6 +38,8 @@ class Level:
         self.rect1 = shapes.RoundedRectangle(x,y,self.LEVEL_SIZE,self.LEVEL_SIZE, radius=self.radius, color=(0,0,0))
         self.rect2 = shapes.RoundedRectangle(x+self.border_width,y+self.border_width, self.LEVEL_SIZE-2*self.border_width,self.LEVEL_SIZE-2*self.border_width, radius= self.radius-1, color=self.color)
         self.label = pyglet.text.Label(self.level, font_name="Times New Roman", font_size=self.px_to_pt(size*7/8*3/8), x = self.x + size/2, y = self.y + size*11/16,anchor_x="center", anchor_y="center", color = self.text_color)
+    def getHint(self) -> str:
+        return self.hint
     def update(self):
         with open(f"backend/jsons/{self.level}.json", "r") as f:
            data = json.load(f)
@@ -74,6 +78,10 @@ class Level:
         return self.stars
     def getText(self) -> text.Label:
         return self.label
+    def getX(self):
+        return self.x
+    def getY(self):
+        return self.y
     def getRect(self) -> tuple[shapes.RoundedRectangle, shapes.RoundedRectangle]:
         return self.rect1, self.rect2
     def isClicked(self, mx, my) -> bool:

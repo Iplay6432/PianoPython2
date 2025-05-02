@@ -32,13 +32,12 @@ class Main(pyglet.window.Window):
             if not self.happend:
                 self.game.start(level)
                 self.happend = True
-            if self.game.draw() == True:
-                self.game = None
-                self.levels = None
+            draw = self.game.draw()
+            if draw[0] == True:
+                self.levels.reset()
                 del self.game
                 del self.levels
-                print("reset")
-                self.levels = Levels(self)
+                self.levels = Levels(self, last_score=draw[1])
                 self.game = PianoGame(self)
                 self.happend = False
                 self.screenNumber = 0 

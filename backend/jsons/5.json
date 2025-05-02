@@ -1,6 +1,7 @@
 {
     "bpm": 60,
     "name": "All Notes in Three Octaves",
+    "hint":"I wonder what the numbers do and waht the bottom row does?",
     "notes": [
         {
             "0": [{ "note": "C3", "time": 0, "duration": 1 }],
