@@ -13,6 +13,7 @@ public class MainPanel extends JPanel {
     private BufferedImage myImage;
     private Graphics m;
     private StartStage start;
+    private String state = "0";
 
     public MainPanel(Dimension size) {
         addKeyListener(new Key());
@@ -24,6 +25,19 @@ public class MainPanel extends JPanel {
 
         t = new Timer(5, new main());
         t.start();
+
+    }
+
+    public void start() {
+        t.start();
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     private class main implements ActionListener {
@@ -58,7 +72,8 @@ public class MainPanel extends JPanel {
                 pos = start.getPos();
                 if (pos == 0) {
                     try {
-                        Python.run(pos);
+                        state = "0," + start.getPos();
+                        t.stop();
                     } catch (Exception m) {
                     }
                 }

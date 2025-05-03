@@ -1,4 +1,3 @@
-import argparse
 import pyglet
 from pyglet import shapes
 from backend.Levels import Levels
@@ -10,50 +9,76 @@ class Main(pyglet.window.Window):
         super().__init__(fullscreen=True)
 
         self.label = pyglet.text.Label("Main Window", x=10, y=self.height - 20)
-        self.parser = argparse.ArgumentParser(
-            prog="PianoPython2",
-            description="A piano video game",
-            epilog="Imagine not knowing what everything does",
-        )
+        self.set_visible(False)
         self.levels = Levels(self)
         self.game = PianoGame(self)
-        self.screenNumber = self.get_input_screen()
+        self.screenNumber = 0
         self.happend = False
-
+        self.do_draw = False
+        self.done = False
+    def hide(self):
+        del self.game
+        del self.levels
+        self.levels = Levels(self)
+        self.game = PianoGame(self)
+        self.happend = False
+        self.screenNumber = 0
+        self.do_draw = False
+        self.set_visible(False)
+    def show(self):
+        self.done = False
+        self.happend = False
+        self.levels.reset()
+        del self.game
+        del self.levels
+        self.levels = Levels(self)
+        self.game = PianoGame(self)
+        self.happend = False
+        self.screenNumber = 0
+        self.do_draw = True
+        self.set_visible(True) 
+    def getDone(self):
+        return self.done 
     def on_draw(self):
-        self.clear()
-        if int(self.get_screen()) == 0:
-            end = self.levels.isEnded()
-            if end[0]:
-                self.screenNumber = str(1) + str(end[1])
-            self.levels.draw()
-        elif int(list(str(self.get_screen()))[0]) == 1:
-            level = list(str(self.get_screen()))[1]
-            if not self.happend:
-                self.game.start(level)
-                self.happend = True
-            draw = self.game.draw()
-            if draw[0] == True:
-                self.levels.reset()
-                del self.game
-                del self.levels
-                self.levels = Levels(self, last_score=draw[1])
-                self.game = PianoGame(self)
-                self.happend = False
-                self.screenNumber = 0 
+        if self.do_draw:
+            self.clear()
+            if int(self.get_screen()) == 0:
+                end = self.levels.isEnded()
+                if end[0]:
+                    self.screenNumber = str(1) + str(end[1])
+                self.levels.draw()
+            elif int(list(str(self.get_screen()))[0]) == 1:
+                level = list(str(self.get_screen()))[1]
+                if not self.happend:
+                    self.game.start(level)
+                    self.happend = True
+                draw = self.game.draw()
+                if draw[0] == True:
+                    self.levels.reset()
+                    del self.game
+                    del self.levels
+                    self.levels = Levels(self, last_score=draw[1])
+                    self.game = PianoGame(self)
+                    self.happend = False
+                    self.screenNumber = 0 
     def on_key_press(self, symbol, modifiers):
-        if int(self.get_screen()) == 0:
-            self.levels.key_pressed(symbol, modifiers)
-        elif int(list(str(self.get_screen()))[0]) == 1:
-            if symbol != 65307: #65307 = esc
-                self.game.key_pressed(symbol, modifiers)
-            else:
-                del self.game
-                del self.levels
-                self.levels = Levels(self)
-                self.game = PianoGame(self)
-                self.happend = False
-                self.screenNumber = 0    
+        if self.do_draw:
+            if int(self.get_screen()) == 0:
+                if symbol != 65307: #65307 = esc
+                    self.levels.key_pressed(symbol, modifiers)
+                else:
+                    self.done = True
+                
+            elif int(list(str(self.get_screen()))[0]) == 1:
+                if symbol != 65307: #65307 = esc
+                    self.game.key_pressed(symbol, modifiers)
+                else:     
+                    del self.game
+                    del self.levels
+                    self.levels = Levels(self)
+                    self.game = PianoGame(self)
+                    self.happend = False
+                    self.screenNumber = 0   
     def on_key_release(self, symbol, modifiers):
         if int(list(str(self.get_screen()))[0]) == 1:
             self.game.key_released(symbol, modifiers)
@@ -64,12 +89,6 @@ class Main(pyglet.window.Window):
     def set_screen(self, screenNumber: int) -> int:
         self.screenNumber = screenNumber
         return self.screenNumber
-
-    def get_input_screen(self) -> int:  # 0: Levels 1: Freeplay 2: Game
-        self.parser.add_argument("-s", "--screen")
-        args = self.parser.parse_args()
-        return args.screen
-
 
 if __name__ == "__main__":
     window = Main()
