@@ -7,7 +7,7 @@ A spiritual successor to PianoPython using a different library and also using ja
 - [ ] Better UI design?
 ### Python
 - [x] Add exit key
-- [ ] Homescreen has back button/key (esc) to go back to java portion
+- [x] Homescreen has back button/key (esc) to go back to java portion
 - [x] Score Handling
     - [x] Record times of all Keyboard Presses
     - [x] Record times of all Falling notes Playing
