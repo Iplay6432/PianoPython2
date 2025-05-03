@@ -5,7 +5,6 @@ from backend.Piano import PianoKeyboard
 import backend.FallingNote as fn 
 import pyglet.window.key as key
 import time as t
-from number_line import NumberLine
 # top space is 1 mesures!
 # always in 4/4, may implement others later
 class PianoGame:
