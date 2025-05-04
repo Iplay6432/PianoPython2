@@ -8,10 +8,10 @@ import random
 # s 1 mesures! all in 4/4 may implement others later
 class FaillingNote(pyglet.shapes.BorderedRectangle):
     def __init__(self, note: str, height: float, width: int,
-                 border_width: int,vol=50,color=(255, 255, 255),
+                 border_width: int,vol=1,color=(255, 255, 255),
                  border_color=(0, 0, 0),
                  anchor_x="bottom left",
-        durr: float = 2, bpm: int = 100, time: float = 2):  # time is in beats
+        durr: float = 2, bpm: int = 100, time: float = 2,):  # time is in beats
         
         x = 0
         y = height
@@ -102,12 +102,10 @@ class FaillingNote(pyglet.shapes.BorderedRectangle):
             pass
     def _play(self, sound: pyglet.media.load, time: int):
         self.player.queue(sound)
+        self.player.volume = self.volume
         self.player.play()
         sleep(time)
-        # while self.player.volume > .5:
-        #     self.player.volume = self.logistic_curve(time)
         self.player.pause()
-        # self.done = 
         
     def logistic_curve(self,timee):
         return 75 / (1 + 2.718 ** (8*(timee-(timee/2))))

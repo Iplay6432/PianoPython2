@@ -21,6 +21,11 @@ class PianoKeyboard:
         self.octive  = 4
         self.last_octive = 3 
         o=0
+        temp = []
+        with open("settings.txt", "r") as f:
+            for line in f.readlines():
+                temp.append(float(line.strip()))
+        self.volume = temp[1]
         with open("backend/data/keybinds.json", "r") as file:
             self.keybinds = json.load(file)
             file.close()
@@ -34,6 +39,7 @@ class PianoKeyboard:
                 self.WHITE_KEY_WIDTH,
                 self.WHITE_KEY_HEIGHT,
                 self.BORDER_WIDTH,
+                vol=self.volume,
             ))
         m = 0
         for i in range(3):
@@ -49,7 +55,8 @@ class PianoKeyboard:
                         self.BLACK_KEY_HEIGHT,
                         self.BORDER_WIDTH,
                         anchor_x="center",
-                        color= (0,0,0)
+                        color= (0,0,0),
+                        vol=self.volume
                     )
                 )
                 m += 1
@@ -68,7 +75,8 @@ class PianoKeyboard:
                         self.BLACK_KEY_HEIGHT,
                         self.BORDER_WIDTH,
                         anchor_x="center",
-                        color= (0,0,0)
+                        color= (0,0,0),
+                        vol=self.volume
                     )
                 )
                 m += 1

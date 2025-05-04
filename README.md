@@ -11,5 +11,16 @@ To run the program run the following commands one after the other concurrently (
 java Main.java
 python PythonDriver.py
 
-On windows you can also use ./start.bat but to stop the program do ctrl + c and crtl + break in each window to close the program
-<!-- java -cp (jarfilename).jar Main.java --screen 1 -->
+On windows you can also use ./start.bat
+
+To stop the program use the escape key on the title screen
+
+Controls:
+-
+- Escape &rarr; go back / exit (on title screen)
+- Keys s-k &rarr; play in current octave, white notes
+- Keys e, r, y, u, i &rarr; play in current octave, black notes
+- Keys z-m &rarr; play octave below if not at lowest octave, if it is play octave up, white notes
+- Keys 2-6 &rarr; play octave below if not at lowest octave, if it is play octave up, black notes
+- Space &rarr; move up 1 octave
+- Left Alt &rarr; move down 1 octave 

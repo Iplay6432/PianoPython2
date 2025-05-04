@@ -32,7 +32,6 @@ public class Server extends Thread {
         try {
             String m = in.readUTF();
             if (m.equals("0")) {
-                System.out.println("Client Says: " + m);
                 return true;
             } else {
                 return false;
@@ -51,7 +50,6 @@ public class Server extends Thread {
             in = new DataInputStream(s.getInputStream());
             out = new DataOutputStream(s.getOutputStream());
         } catch (IOException i) {
-            System.out.println(i);
             System.out.println(i);
         }
     }

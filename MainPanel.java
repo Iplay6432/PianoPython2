@@ -31,6 +31,7 @@ public class MainPanel extends JPanel {
 
     public void start() {
         t.start();
+        stage = 0;
     }
 
     public String getState() {
@@ -61,24 +62,29 @@ public class MainPanel extends JPanel {
         }
 
         public void keyPressed(KeyEvent e) {
-            System.out.println(e.getKeyCode());
-            if (e.getKeyCode() == 38 && up) {
-                if (pos > 0)
-                    pos -= 1;
-                up = false;
-            }
-            if (e.getKeyCode() == 40 && down) {
-                if (pos < MAX_POS)
-                    pos += 1;
-                down = false;
-            }
-            if (e.getKeyCode() == 10) {
-                pos = start.getPos();
-                if (pos == 0) {
-                    try {
-                        state = "0," + start.getPos();
+            if (stage == 0) {
+                if (e.getKeyCode() == 38 && up) {
+                    if (pos > 0)
+                        pos -= 1;
+                    up = false;
+                }
+                if (e.getKeyCode() == 40 && down) {
+                    if (pos < MAX_POS)
+                        pos += 1;
+                    down = false;
+                }
+                if (e.getKeyCode() == 10) {
+                    pos = start.getPos();
+                    if (pos == 0) {
+                        try {
+                            state = "0," + start.getPos();
+                            t.stop();
+                        } catch (Exception m) {
+                            System.out.println(m);
+                        }
+                    } else if (pos == 2) {
                         t.stop();
-                    } catch (Exception m) {
+                        state = "0," + start.getPos();
                     }
                 }
             }
@@ -91,11 +97,13 @@ public class MainPanel extends JPanel {
         }
 
         public void keyReleased(KeyEvent e) {
-            if (e.getKeyCode() == 38 && !up) {
-                up = true;
-            }
-            if (e.getKeyCode() == 40 && !down) {
-                down = true;
+            if (stage == 0) {
+                if (e.getKeyCode() == 38 && !up) {
+                    up = true;
+                }
+                if (e.getKeyCode() == 40 && !down) {
+                    down = true;
+                }
             }
         }
     }

@@ -26,6 +26,11 @@ class PianoGame:
         self.beat = 0
         self.last_beat = 0
         self.notes_done = 0
+        temp = []   
+        with open("settings.txt", "r") as f:
+            for line in f.readlines():
+                temp.append(float(line.strip()))
+        self.volume = temp[0]
     def stop(self):
         self.beat = 0
         self.level = 1
@@ -55,10 +60,10 @@ class PianoGame:
             for time, note_list in notes.items():
                 for note in note_list:
                     if "b" in note["note"]:
-                        temp = fn.FaillingNote(note["note"], self.window.height, self.WHITE_KEY_WIDTH, self.BORDER_WIDTH, border_color=(65,29,124), color=(137,89,217), anchor_x="center", time=note["time"], durr=note["duration"], bpm=self.bpm)
+                        temp = fn.FaillingNote(note["note"], self.window.height, self.WHITE_KEY_WIDTH, self.BORDER_WIDTH, border_color=(65,29,124), color=(137,89,217), anchor_x="center", time=note["time"], durr=note["duration"], bpm=self.bpm, vol=self.volume)
                         self.notes.append(temp)
                     else:
-                        temp = fn.FaillingNote(note["note"], self.window.height, self.WHITE_KEY_WIDTH, self.BORDER_WIDTH, color=(169, 217, 89), border_color=(73, 104, 24), anchor_x="bottom left", time=note["time"], durr=note["duration"], bpm=self.bpm)
+                        temp = fn.FaillingNote(note["note"], self.window.height, self.WHITE_KEY_WIDTH, self.BORDER_WIDTH, color=(169, 217, 89), border_color=(73, 104, 24), anchor_x="bottom left", time=note["time"], durr=note["duration"], bpm=self.bpm, vol=self.volume)
                         self.notes.append(temp)
         self.game_note_times = []
         self.user_note_times = []
