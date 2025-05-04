@@ -18,15 +18,24 @@ public class Main {
          main.requestFocus();
          f.setVisible(true);
          while (true) {
+            state = main.getState();
             while (true) {
-               state = main.getState();
+               if (state.equals("1")) {
+                  server.close();
+                  System.exit(0);
+               }
                if (state.equals("0,0")) {
                   f.setVisible(false);
                   server.startPython();
                   break;
                }
+               state = main.getState();
             }
             while (true) {
+               if (state.equals("1")) {
+                  server.close();
+                  System.exit(0);
+               }
                if (server.startJava()) {
                   f.setVisible(true);
                   main.setState("0");

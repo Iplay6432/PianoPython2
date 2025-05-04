@@ -14,6 +14,7 @@ public class MainPanel extends JPanel {
     private Graphics m;
     private StartStage start;
     private String state = "0";
+    private int stage = 0;
 
     public MainPanel(Dimension size) {
         addKeyListener(new Key());
@@ -42,9 +43,11 @@ public class MainPanel extends JPanel {
 
     private class main implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            start.setPos(pos);
-            start.draw();
-            repaint();
+            if (stage == 0) {
+                start.setPos(pos);
+                start.draw();
+                repaint();
+            }
         }
     }
 
@@ -58,6 +61,7 @@ public class MainPanel extends JPanel {
         }
 
         public void keyPressed(KeyEvent e) {
+            System.out.println(e.getKeyCode());
             if (e.getKeyCode() == 38 && up) {
                 if (pos > 0)
                     pos -= 1;
@@ -77,6 +81,12 @@ public class MainPanel extends JPanel {
                     } catch (Exception m) {
                     }
                 }
+            }
+            if (e.getKeyCode() == 27) {
+                if (stage == 0)
+                    state = "1";
+                else
+                    stage = 0;
             }
         }
 

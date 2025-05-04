@@ -19,6 +19,15 @@ public class Server extends Thread {
         }
     }
 
+    public void close() {
+        try {
+            out.writeUTF("1");
+            out.flush();
+        } catch (IOException i) {
+            System.out.print(i);
+        }
+    }
+
     public boolean startJava() {
         try {
             String m = in.readUTF();

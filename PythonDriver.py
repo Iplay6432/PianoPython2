@@ -3,6 +3,7 @@ from Main import Main
 import pyglet
 import threading
 import time as t
+import os
 game = Main()
 host = "127.0.0.1"
 port = 12345
@@ -36,11 +37,12 @@ def _server():
                 send_message(s, "0")
                 t.sleep(0.01)
                 _server()
-    
-
+    if m == "1":
+        os._exit(0)
+b = threading.Thread(target=_server, args=())
 def server():
     global started 
-    b = threading.Thread(target=_server, args=()).start()
+    b.start()
 
 if __name__ == "__main__":
     try:
@@ -48,6 +50,6 @@ if __name__ == "__main__":
         server()
         pyglet.app.run()
     except KeyboardInterrupt:
-        exit(0)
         b.join()
         print("Exiting...")
+        exit(0)
