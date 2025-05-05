@@ -1,4 +1,10 @@
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 public class StartStage {
 
@@ -22,7 +28,7 @@ public class StartStage {
     private int FONT_WIDTH;
     private int FONT_SIZE;
     private int ARROW_ARC;
-
+    private Image image;
     private String[] options = new String[NUMBER_OF_OPTIONS + 1];
 
     public StartStage(Dimension size, Graphics m, int pos) {
@@ -30,6 +36,21 @@ public class StartStage {
         this.size = size;
         this.pos = pos;
         setVals();
+        int aspectRatio = (int) (size.getWidth() / size.getHeight());
+        try {
+            if (aspectRatio == (int) (4 / 3)) {
+                image = ImageIO.read(new File("img/4x3.png"));
+            } else if (aspectRatio == (int) (16 / 9)) {
+                image = ImageIO.read(new File("img/16x9.png"));
+            } else if (aspectRatio == (int) (16 / 10)) {
+                image = ImageIO.read(new File("img/16x10.png"));
+            } else {
+                image = ImageIO.read(new File("img/16x10.png"));
+            }
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+
     }
 
     private void setVals() {
@@ -43,6 +64,7 @@ public class StartStage {
         ARROW_WIDTH = (int) (size.getWidth() / 20);
         ARROW_ARC = (int) (BOX_ARC / 10);
         POSTION_1_X = BOX_X - ARROW_WIDTH - (int) (size.getHeight() / 30);
+        POSTION_1_X = (int) (size.getWidth() / 2);
         POSTION_1_Y = BOX_Y + (int) (size.getHeight() / 30);
 
         SPACE_BETWEEN_POSITIONS = (int) ((BOX_HEIGHT - 2 * (POSTION_1_Y - BOX_Y)) / (NUMBER_OF_OPTIONS));
@@ -59,13 +81,14 @@ public class StartStage {
         m.setColor(Color.WHITE);
 
         m.fillRect(0, 0, (int) size.getWidth(), (int) size.getHeight());
-        m.setColor(Color.BLACK);
-        Graphics2D g2 = (Graphics2D) m;
-        g2.drawRoundRect(BOX_X, BOX_Y, BOX_WIDTH, BOX_HEIGHT, BOX_ARC, BOX_ARC);
-        drawArrow(pos);
-        m.setFont(new Font("Calibri", Font.BOLD, FONT_SIZE));
+        m.drawImage(image, 0, 0, (int) size.getWidth(), (int) size.getHeight(), null);
+        // Graphics2D g2 = (Graphics2D) m;
+        // g2.drawRoundRect(BOX_X, BOX_Y, BOX_WIDTH, BOX_HEIGHT, BOX_ARC, BOX_ARC);
+        m.setColor(Color.BLUE.brighter());
+        m.setFont(new Font("New Times Roman", Font.BOLD, FONT_SIZE));
         FontMetrics fm = m.getFontMetrics();
-        drawText(fm.getHeight());
+        drawArrow(pos, fm);
+        drawText(fm.getHeight(), fm);
     }
 
     public int getPos() {
@@ -76,18 +99,23 @@ public class StartStage {
         pos = p;
     }
 
-    private void drawText(int width) {
+    private void drawText(int height, FontMetrics fm) {
         int i = 0;
-        for (int y = POSTION_1_Y + width; y < POSTION_1_Y + width
+        Graphics2D g2 = (Graphics2D) m;
+        g2.setColor(new Color(137, 89, 217));
+        for (int y = POSTION_1_Y + height; y < POSTION_1_Y + height
                 + SPACE_BETWEEN_POSITIONS * NUMBER_OF_OPTIONS; y += SPACE_BETWEEN_POSITIONS_ARROW) {
-            m.drawString(options[i], BOX_X + SPACE_BETWEEN_POSITIONS / 2, y);
+            int width = fm.stringWidth(options[i]);
+            g2.drawString(options[i], POSTION_1_X - (width / 2), y);
             i += 1;
         }
     }
 
-    private void drawArrow(int pos) {
-        m.setColor(Color.BLACK);
-        int[] xs = { POSTION_1_X, POSTION_1_X, POSTION_1_X + ARROW_WIDTH }; // draw it based on the center
+    private void drawArrow(int pos, FontMetrics fm) {
+        m.setColor(new Color(137, 89, 217));
+        int width = fm.stringWidth(options[pos]);
+        int x = POSTION_1_X - width;
+        int[] xs = { x, x, x + ARROW_WIDTH }; // draw it based on the center
         int[] ys = { POSTION_1_Y + SPACE_BETWEEN_POSITIONS_ARROW * pos,
                 POSTION_1_Y + SPACE_BETWEEN_POSITIONS_ARROW * pos + ARROW_HEIGHT,
                 POSTION_1_Y + SPACE_BETWEEN_POSITIONS_ARROW * pos + ARROW_HEIGHT / 2 };

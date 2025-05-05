@@ -4,7 +4,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.swing.*;
-import javax.swing.event.*;
 import java.awt.*;
 
 public class FallingVolume extends Setting<Double> {

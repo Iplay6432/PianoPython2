@@ -1,5 +1,4 @@
 import javax.swing.JFrame;
-import settings.*;
 
 public class Main {
    private static int screen = 0;

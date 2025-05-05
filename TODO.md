@@ -19,5 +19,5 @@ A spiritual successor to PianoPython using a different library and also using ja
     - [x] Add the names for each level
 
 ### Java
-- [ ] Settings Menu
+- [x] Settings Menu
 - [ ] Better Title Screen?  
