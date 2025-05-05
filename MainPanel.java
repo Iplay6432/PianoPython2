@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
+import java.io.File;
+import java.io.IOException;
 
 public class MainPanel extends JPanel {
     private int pos = 0;
@@ -26,6 +28,25 @@ public class MainPanel extends JPanel {
 
         t = new Timer(5, new main());
         t.start();
+        try {
+            File f = new File("played");
+            if (f.createNewFile()) {
+                JOptionPane.showMessageDialog(null, "Controls:\r\n" + //
+                        "\r\n" + //
+                        "Navigate with arrow keys and Enter\r\n" +
+                        "- Escape → go back / exit (on title screen)\r\n" + //
+                        "- Keys s-k → play in current octave, white notes\r\n" + //
+                        "- Keys e, r, y, u, i →; play in current octave, black notes\r\n" + //
+                        "- Keys z-m →; play octave below if not at lowest octave, if it is play octave up, white notes\r\n"
+                        + //
+                        "- Keys 2-6 →; play octave below if not at lowest octave, if it is play octave up, black notes\r\n"
+                        + //
+                        "- Space →; move up 1 octave\r\n" + //
+                        "- Left Alt →; move down 1 octave ");
+            }
+        } catch (IOException t) {
+            System.out.println(t);
+        }
 
     }
 
