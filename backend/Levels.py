@@ -6,7 +6,7 @@ import time as t
 import threading
 import ctypes
 class Levels:
-    def __init__(self, window, last_score=None):
+    def __init__(self, window, last_score=None, freeplay = False):
         self.window = window
         
         self.TOTAL_NUMBER_OF_LEVELS = 20
@@ -23,7 +23,7 @@ class Levels:
         self.zero_order =[4,5,6,7,0,1,2,3]
         self.pos = 0
         self.last_score = last_score
-
+        self.freeplay = freeplay
         m = 0
         self.win = None
         self.end = False
@@ -36,6 +36,11 @@ class Levels:
                 self.levels.append(temp)
                 m+=1   
         self.select(self.pos)
+        if self.freeplay == True:
+            self.play()
+    def play(self, dt=None):
+        self.pos = 99
+        self.end = True
     def reset(self):
         self.end = False
         for l in self.levels:
@@ -44,11 +49,12 @@ class Levels:
             self.win.close()
         self.win = None
     def key_pressed(self, symbol, modifiers):
-        if(symbol == 65363):
-            self.pos = self.pos + 1 if self.pos < self.LEVELS_PER_PAGE -1 else self.pos
-            self.select(self.pos)
-        if(symbol == 65361):
-            self.pos = self.pos -1 if self.pos > 0 else  self.pos
+        if not self.end:
+            if(symbol == 65363):
+                self.pos = self.pos + 1 if self.pos < self.LEVELS_PER_PAGE -1 else self.pos
+                self.select(self.pos)
+            if(symbol == 65361):
+                self.pos = self.pos -1 if self.pos > 0 else  self.pos
             self.select(self.pos)
         if(symbol  == 65293):
             self.end = True
@@ -73,6 +79,7 @@ class Levels:
             l.setColor(self.LEVEL_COLOR)
         self.levels[self.zero_order[n]].setColor((142,172,180))
     def isEnded(self):
+        print(self.pos)
         return [bool(self.end), int(self.pos)+1]
         
         

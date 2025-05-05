@@ -73,7 +73,7 @@ class FaillingNote(pyglet.shapes.BorderedRectangle):
         return self.durr
     def dy(self, fps, beat): #runs every frame at 60fps
         if self.y > self.screen_height/2 - self.height and beat >= self.time:
-            pixels_per_frame = self.speed_pixels_per_seccond / float(fps)
+            pixels_per_frame = self.speed_pixels_per_seccond / float(fps or 60)
             # self.y -= ((self.screen_height/2)/float(fps))/4
             self.y -= pixels_per_frame
             if not self.played and self.y <= self.screen_height/2:

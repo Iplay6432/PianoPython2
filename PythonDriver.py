@@ -38,6 +38,16 @@ def _server():
                 t.sleep(0.01)
                 _server()
     if m == "1":
+        print("freeplay")
+        action(game.freeplay)
+        while True:
+            t.sleep(0.01)
+            if game.getDone():
+                action(game.hide)
+                send_message(s, "0")
+                t.sleep(0.01)
+                _server()
+    if m == "2":
         os._exit(0)
 b = threading.Thread(target=_server, args=())
 def server():

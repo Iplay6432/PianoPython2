@@ -1,16 +1,13 @@
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 
 public class StartStage {
 
     private Graphics m;
     private Dimension size;
-    private int NUMBER_OF_OPTIONS = 3 - 1;
+    private int NUMBER_OF_OPTIONS = 4 - 1;
 
     private int BOX_HEIGHT;
     private int BOX_WIDTH;
@@ -75,6 +72,7 @@ public class StartStage {
         options[0] = "Levels";
         options[1] = "Freeplay";
         options[2] = "Settings";
+        options[3] = "How To Play";
     }
 
     public void draw() {
@@ -105,8 +103,10 @@ public class StartStage {
         g2.setColor(new Color(137, 89, 217));
         for (int y = POSTION_1_Y + height; y < POSTION_1_Y + height
                 + SPACE_BETWEEN_POSITIONS * NUMBER_OF_OPTIONS; y += SPACE_BETWEEN_POSITIONS_ARROW) {
-            int width = fm.stringWidth(options[i]);
-            g2.drawString(options[i], POSTION_1_X - (width / 2), y);
+            if (i < NUMBER_OF_OPTIONS + 1) {
+                int width = fm.stringWidth(options[i]);
+                g2.drawString(options[i], POSTION_1_X - (width / 2), y);
+            }
             i += 1;
         }
     }

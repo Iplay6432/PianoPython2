@@ -36,7 +36,19 @@ class Main(pyglet.window.Window):
         self.happend = False
         self.screenNumber = 0
         self.do_draw = True
-        self.set_visible(True) 
+        self.set_visible(True)
+    def freeplay(self):
+        self.done = False
+        self.happend = False
+        self.levels.reset()
+        del self.game
+        del self.levels
+        self.levels = Levels(self, freeplay = True)
+        self.game = PianoGame(self)
+        self.happend = False
+        self.screenNumber = 0
+        self.do_draw = True
+        self.set_visible(True)
     def getDone(self):
         return self.done 
     def on_draw(self):
@@ -48,9 +60,12 @@ class Main(pyglet.window.Window):
                     self.screenNumber = str(1) + str(end[1])
                 self.levels.draw()
             elif int(list(str(self.get_screen()))[0]) == 1:
-                level = list(str(self.get_screen()))[1]
                 if not self.happend:
-                    self.game.start(level)
+                    temp = ""
+                    level = list(str(self.get_screen()))[1:]
+                    for i in level:
+                        temp += i
+                    self.game.start(temp)
                     self.happend = True
                 draw = self.game.draw()
                 if draw[0] == True:

@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class MainPanel extends JPanel {
     private int pos = 0;
-    private int MAX_POS = 3 - 1;
+    private int MAX_POS = 4 - 1;
     private Dimension size;
     private Timer t;
     private BufferedImage myImage;
@@ -31,23 +31,27 @@ public class MainPanel extends JPanel {
         try {
             File f = new File("played");
             if (f.createNewFile()) {
-                JOptionPane.showMessageDialog(null, "Controls:\r\n" + //
-                        "\r\n" + //
-                        "Navigate with arrow keys and Enter\r\n" +
-                        "- Escape → go back / exit (on title screen)\r\n" + //
-                        "- Keys s-k → play in current octave, white notes\r\n" + //
-                        "- Keys e, r, y, u, i →; play in current octave, black notes\r\n" + //
-                        "- Keys z-m →; play octave below if not at lowest octave, if it is play octave up, white notes\r\n"
-                        + //
-                        "- Keys 2-6 →; play octave below if not at lowest octave, if it is play octave up, black notes\r\n"
-                        + //
-                        "- Space →; move up 1 octave\r\n" + //
-                        "- Left Alt →; move down 1 octave ");
+                instruct();
             }
         } catch (IOException t) {
             System.out.println(t);
         }
 
+    }
+
+    private void instruct() {
+        JOptionPane.showMessageDialog(null, "Controls:\r\n" + //
+                "\r\n" + //
+                "- Navigate with arrow keys and enter\r\n" +
+                "- Escape → go back / exit (on title screen)\r\n" + //
+                "- Keys s-k → play in current octave, white notes\r\n" + //
+                "- Keys e, r, y, u, i → play in current octave, black notes\r\n" + //
+                "- Keys z-m → play octave below if not at lowest octave, if it is play octave up, white notes\r\n"
+                + //
+                "- Keys 2-6 → play octave below if not at lowest octave, if it is play octave up, black notes\r\n"
+                + //
+                "- Space → move up 1 octave\r\n" + //
+                "- Left Alt → move down 1 octave ");
     }
 
     public void start() {
@@ -96,7 +100,7 @@ public class MainPanel extends JPanel {
                 }
                 if (e.getKeyCode() == 10) {
                     pos = start.getPos();
-                    if (pos == 0) {
+                    if (pos == 0 || pos == 1) {
                         try {
                             state = "0," + start.getPos();
                             t.stop();
@@ -106,6 +110,8 @@ public class MainPanel extends JPanel {
                     } else if (pos == 2) {
                         t.stop();
                         state = "0," + start.getPos();
+                    } else if (pos == 3) {
+                        instruct();
                     }
                 }
             }

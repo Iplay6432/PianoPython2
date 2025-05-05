@@ -19,9 +19,18 @@ public class Server extends Thread {
         }
     }
 
-    public void close() {
+    public void startPythonFreeplay() {
         try {
             out.writeUTF("1");
+            out.flush();
+        } catch (IOException e) {
+            System.out.print(e);
+        }
+    }
+
+    public void close() {
+        try {
+            out.writeUTF("2");
             out.flush();
         } catch (IOException i) {
             System.out.print(i);

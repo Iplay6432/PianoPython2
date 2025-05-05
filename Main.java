@@ -33,6 +33,10 @@ public class Main {
                   f.setVisible(false);
                   server.startPython();
                   break;
+               } else if (state.equals("0,1")) {
+                  f.setVisible(false);
+                  server.startPythonFreeplay();
+                  break;
                } else if (state.equals("0,2")) {
                   f.setVisible(false);
                   f.setContentPane(settings);

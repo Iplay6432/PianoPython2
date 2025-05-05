@@ -10,11 +10,12 @@ public class FallingVolume extends Setting<Double> {
     private JPanel p;
     private JSlider slider;
     private JLabel label;
+    private int FONT_SIZE;
 
     public FallingVolume(int width, int height) {
         super();
         int FONT_WIDTH = height / 30;
-        int FONT_SIZE = (int) (96.0 * FONT_WIDTH / Toolkit.getDefaultToolkit().getScreenResolution());
+        FONT_SIZE = (int) (96.0 * FONT_WIDTH / Toolkit.getDefaultToolkit().getScreenResolution());
         p = new JPanel();
         p.setLayout(new GridLayout(2, 1));
 
@@ -25,6 +26,10 @@ public class FallingVolume extends Setting<Double> {
         p.add(label);
         p.add(slider);
         p.setBorder(BorderFactory.createEmptyBorder(height / 50, width / 50, height / 50, width / 50));
+    }
+
+    public int getFontSize() {
+        return FONT_SIZE;
     }
 
     public Double getData() {
