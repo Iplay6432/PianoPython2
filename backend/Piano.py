@@ -84,6 +84,7 @@ class PianoKeyboard:
     def draw(self):
         for m in self.keys:
             m.draw()
+        pyglet.text.Label("Current Octave: " + str(self.octive) ,font_name="Times New Roman", font_size=self.BLACK_KEY_WIDTH/2, x=self.window.width/100, y = self.window.height/2,anchor_x="left",anchor_y="baseline", color=(0,0,0)).draw()
 
     def key_pressed(self, symbol, modifer):
         if key.symbol_string(symbol).replace("_", "") in self.keybinds:
