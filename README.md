@@ -17,6 +17,7 @@ To stop the program use the escape key on the title screen
 
 Controls:
 -
+- Navigate with arrow keys, enter, and esc
 - Escape &rarr; go back / exit (on title screen)
 - Keys s-k &rarr; play in current octave, white notes
 - Keys e, r, y, u, i &rarr; play in current octave, black notes

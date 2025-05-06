@@ -43,6 +43,7 @@ public class MainPanel extends JPanel {
         JOptionPane.showMessageDialog(null, "Controls:\r\n" + //
                 "\r\n" + //
                 "- Navigate with arrow keys and enter\r\n" +
+                "- Press h on level screen for hints \r\n" +
                 "- Escape → go back / exit (on title screen)\r\n" + //
                 "- Keys s-k → play in current octave, white notes\r\n" + //
                 "- Keys e, r, y, u, i → play in current octave, black notes\r\n" + //

@@ -28,7 +28,6 @@ class Main(pyglet.window.Window):
     def show(self):
         self.done = False
         self.happend = False
-        self.levels.reset()
         del self.game
         del self.levels
         self.levels = Levels(self)
@@ -40,7 +39,6 @@ class Main(pyglet.window.Window):
     def freeplay(self):
         self.done = False
         self.happend = False
-        self.levels.reset()
         del self.game
         del self.levels
         self.levels = Levels(self, freeplay = True)
@@ -69,7 +67,6 @@ class Main(pyglet.window.Window):
                     self.happend = True
                 draw = self.game.draw()
                 if draw[0] == True:
-                    self.levels.reset()
                     del self.game
                     del self.levels
                     self.levels = Levels(self, last_score=draw[1])

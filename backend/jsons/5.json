@@ -1,45 +1,576 @@
 {
-    "bpm": 60,
-    "name": "All Notes in Three Octaves",
-    "hint":"I wonder what the numbers do and waht the bottom row does?",
-    "notes": [
+  "bpm": 70,
+  "name": "Audiovent, Simplifed",
+  "hint":"Make sure to memorize/get the first chords down to a tea, make sure to listen to how it goes!!",
+  "notes": [
+    {
+      "0.0": [
         {
-            "0": [{ "note": "C3", "time": 0, "duration": 1 }],
-            "1": [{ "note": "Db3", "time": 1, "duration": 1 }],
-            "2": [{ "note": "D3", "time": 2, "duration": 1 }],
-            "3": [{ "note": "Eb3", "time": 3, "duration": 1 }],
-            "4": [{ "note": "E3", "time": 4, "duration": 1 }],
-            "5": [{ "note": "F3", "time": 5, "duration": 1 }],
-            "6": [{ "note": "Gb3", "time": 6, "duration": 1 }],
-            "7": [{ "note": "G3", "time": 7, "duration": 1 }],
-            "8": [{ "note": "Ab3", "time": 8, "duration": 1 }],
-            "9": [{ "note": "A3", "time": 9, "duration": 1 }],
-            "10": [{ "note": "Bb3", "time": 10, "duration": 1 }],
-            "11": [{ "note": "B3", "time": 11, "duration": 1 }],
-            "12": [{ "note": "C4", "time": 12, "duration": 1 }],
-            "13": [{ "note": "Db4", "time": 13, "duration": 1 }],
-            "14": [{ "note": "D4", "time": 14, "duration": 1 }],
-            "15": [{ "note": "Eb4", "time": 15, "duration": 1 }],
-            "16": [{ "note": "E4", "time": 16, "duration": 1 }],
-            "17": [{ "note": "F4", "time": 17, "duration": 1 }],
-            "18": [{ "note": "Gb4", "time": 18, "duration": 1 }],
-            "19": [{ "note": "G4", "time": 19, "duration": 1 }],
-            "20": [{ "note": "Ab4", "time": 20, "duration": 1 }],
-            "21": [{ "note": "A4", "time": 21, "duration": 1 }],
-            "22": [{ "note": "Bb4", "time": 22, "duration": 1 }],
-            "23": [{ "note": "B4", "time": 23, "duration": 1 }],
-            "24": [{ "note": "C5", "time": 24, "duration": 1 }],
-            "25": [{ "note": "Db5", "time": 25, "duration": 1 }],
-            "26": [{ "note": "D5", "time": 26, "duration": 1 }],
-            "27": [{ "note": "Eb5", "time": 27, "duration": 1 }],
-            "28": [{ "note": "E5", "time": 28, "duration": 1 }],
-            "29": [{ "note": "F5", "time": 29, "duration": 1 }],
-            "30": [{ "note": "Gb5", "time": 30, "duration": 1 }],
-            "31": [{ "note": "G5", "time": 31, "duration": 1 }],
-            "32": [{ "note": "Ab5", "time": 32, "duration": 1 }],
-            "33": [{ "note": "A5", "time": 33, "duration": 1 }],
-            "34": [{ "note": "Bb5", "time": 34, "duration": 1 }],
-            "35": [{ "note": "B5", "time": 35, "duration": 1 }]
+          "note": "C4",
+          "time": 0.0,
+          "duration": 0.5
+        },
+        {
+          "note": "G4",
+          "time": 0.0,
+          "duration": 0.5
+        },
+        {
+          "note": "Bb4",
+          "time": 0.0,
+          "duration": 0.5
         }
-    ]
+      ],
+      "0.5": [
+        {
+          "note": "C4",
+          "time": 0.5,
+          "duration": 0.5
+        },
+        {
+          "note": "G4",
+          "time": 0.5,
+          "duration": 0.5
+        },
+        {
+          "note": "Bb4",
+          "time": 0.5,
+          "duration": 0.5
+        }
+      ],
+      "1.0": [
+        {
+          "note": "C4",
+          "time": 1.0,
+          "duration": 0.5
+        },
+        {
+          "note": "G4",
+          "time": 1.0,
+          "duration": 0.5
+        },
+        {
+          "note": "Bb4",
+          "time": 1.0,
+          "duration": 0.5
+        }
+      ],
+      "1.5": [
+        {
+          "note": "C4",
+          "time": 1.5,
+          "duration": 0.5
+        },
+        {
+          "note": "G4",
+          "time": 1.5,
+          "duration": 0.5
+        },
+        {
+          "note": "Bb4",
+          "time": 1.5,
+          "duration": 0.5
+        }
+      ],
+      "2.0": [
+        {
+          "note": "C4",
+          "time": 2.0,
+          "duration": 0.5
+        },
+        {
+          "note": "G4",
+          "time": 2.0,
+          "duration": 0.5
+        },
+        {
+          "note": "Bb4",
+          "time": 2.0,
+          "duration": 0.5
+        }
+      ],
+      "2.5": [
+        {
+          "note": "C4",
+          "time": 2.5,
+          "duration": 0.5
+        },
+        {
+          "note": "G4",
+          "time": 2.5,
+          "duration": 0.5
+        },
+        {
+          "note": "Bb4",
+          "time": 2.5,
+          "duration": 0.5
+        }
+      ],
+      "3.0": [
+        {
+          "note": "C4",
+          "time": 3.0,
+          "duration": 0.5
+        },
+        {
+          "note": "G4",
+          "time": 3.0,
+          "duration": 0.5
+        },
+        {
+          "note": "Bb4",
+          "time": 3.0,
+          "duration": 0.5
+        }
+      ],
+      "3.5": [
+        {
+          "note": "C4",
+          "time": 3.5,
+          "duration": 0.5
+        },
+        {
+          "note": "G4",
+          "time": 3.5,
+          "duration": 0.5
+        },
+        {
+          "note": "Bb4",
+          "time": 3.5,
+          "duration": 0.5
+        }
+      ],
+      "4.0": [
+        {
+          "note": "Eb4",
+          "time": 4.0,
+          "duration": 0.5
+        },
+        {
+          "note": "G4",
+          "time": 4.0,
+          "duration": 0.5
+        }
+      ],
+      "4.5": [
+        {
+          "note": "G4",
+          "time": 4.5,
+          "duration": 0.5
+        },
+        {
+          "note": "Eb4",
+          "time": 4.5,
+          "duration": 0.5
+        }
+      ],
+      "5.0": [
+        {
+          "note": "G4",
+          "time": 5.0,
+          "duration": 0.5
+        },
+        {
+          "note": "Eb4",
+          "time": 5.0,
+          "duration": 0.5
+        }
+      ],
+      "5.5": [
+        {
+          "note": "G4",
+          "time": 5.5,
+          "duration": 0.5
+        },
+        {
+          "note": "Eb4",
+          "time": 5.5,
+          "duration": 0.5
+        }
+      ],
+      "6.0": [
+        {
+          "note": "G4",
+          "time": 6.0,
+          "duration": 0.5
+        },
+        {
+          "note": "Eb4",
+          "time": 6.0,
+          "duration": 0.5
+        }
+      ],
+      "6.5": [
+        {
+          "note": "G4",
+          "time": 6.5,
+          "duration": 0.5
+        },
+        {
+          "note": "Eb4",
+          "time": 6.5,
+          "duration": 0.5
+        }
+      ],
+      "7.0": [
+        {
+          "note": "G4",
+          "time": 7.0,
+          "duration": 0.5
+        },
+        {
+          "note": "Eb4",
+          "time": 7.0,
+          "duration": 0.5
+        }
+      ],
+      "7.5": [
+        {
+          "note": "G4",
+          "time": 7.5,
+          "duration": 0.5
+        },
+        {
+          "note": "Eb4",
+          "time": 7.5,
+          "duration": 0.5
+        }
+      ],
+      "8.0": [
+        {
+          "note": "Eb4",
+          "time": 8.0,
+          "duration": 0.5
+        },
+        {
+          "note": "G4",
+          "time": 8.0,
+          "duration": 0.5
+        }
+      ],
+      "8.5": [
+        {
+          "note": "Eb4",
+          "time": 8.5,
+          "duration": 0.5
+        },
+        {
+          "note": "G4",
+          "time": 8.5,
+          "duration": 0.5
+        }
+      ],
+      "10.0": [
+        {
+          "note": "Eb4",
+          "time": 10.0,
+          "duration": 0.5
+        },
+        {
+          "note": "G4",
+          "time": 10.0,
+          "duration": 0.5
+        }
+      ],
+      "10.5": [
+        {
+          "note": "Eb4",
+          "time": 10.5,
+          "duration": 0.5
+        },
+        {
+          "note": "G4",
+          "time": 10.5,
+          "duration": 0.5
+        }
+      ],
+      "12.0": [
+        {
+          "note": "B4",
+          "time": 12.0,
+          "duration": 0.5
+        }
+      ],
+      "12.5": [
+        {
+          "note": "B4",
+          "time": 12.5,
+          "duration": 0.5
+        }
+      ],
+      "13.0": [
+        {
+          "note": "B4",
+          "time": 13.0,
+          "duration": 0.5
+        }
+      ],
+      "13.5": [
+        {
+          "note": "C5",
+          "time": 13.5,
+          "duration": 0.5
+        }
+      ],
+      "14.0": [
+        {
+          "note": "C5",
+          "time": 14.0,
+          "duration": 0.5
+        }
+      ],
+      "14.5": [
+        {
+          "note": "C5",
+          "time": 14.5,
+          "duration": 0.5
+        }
+      ],
+      "15.0": [
+        {
+          "note": "D5",
+          "time": 15.0,
+          "duration": 1.0
+        }
+      ],
+      "16.0": [
+        {
+          "note": "Eb5",
+          "time": 16.0,
+          "duration": 1.0
+        }
+      ],
+      "17.0": [
+        {
+          "note": "D5",
+          "time": 17.0,
+          "duration": 1.0
+        }
+      ],
+      "18.0": [
+        {
+          "note": "Eb5",
+          "time": 18.0,
+          "duration": 1.0
+        }
+      ],
+      "19.0": [
+        {
+          "note": "D5",
+          "time": 19.0,
+          "duration": 1.0
+        }
+      ],
+      "20.0": [
+        {
+          "note": "Eb5",
+          "time": 20.0,
+          "duration": 1.0
+        }
+      ],
+      "21.0": [
+        {
+          "note": "D5",
+          "time": 21.0,
+          "duration": 1.0
+        }
+      ],
+      "22.0": [
+        {
+          "note": "G5",
+          "time": 22.0,
+          "duration": 2.0
+        }
+      ],
+      "24.0": [
+        {
+          "note": "Eb5",
+          "time": 24.0,
+          "duration": 1.0
+        }
+      ],
+      "25.0": [
+        {
+          "note": "D5",
+          "time": 25.0,
+          "duration": 1.0
+        }
+      ],
+      "26.0": [
+        {
+          "note": "Eb5",
+          "time": 26.0,
+          "duration": 1.0
+        }
+      ],
+      "27.0": [
+        {
+          "note": "D5",
+          "time": 27.0,
+          "duration": 1.0
+        }
+      ],
+      "28.0": [
+        {
+          "note": "Eb5",
+          "time": 28.0,
+          "duration": 1.0
+        }
+      ],
+      "29.0": [
+        {
+          "note": "D5",
+          "time": 29.0,
+          "duration": 1.0
+        }
+      ],
+      "30.0": [
+        {
+          "note": "G5",
+          "time": 30.0,
+          "duration": 2.0
+        }
+      ],
+      "32.0": [
+        {
+          "note": "G5",
+          "time": 32.0,
+          "duration": 1.5
+        }
+      ],
+      "33.5": [
+        {
+          "note": "F5",
+          "time": 33.5,
+          "duration": 1.5
+        }
+      ],
+      "35.0": [
+        {
+          "note": "Bb5",
+          "time": 35.0,
+          "duration": 1.0
+        }
+      ],
+      "36.0": [
+        {
+          "note": "F5",
+          "time": 36.0,
+          "duration": 3.0
+        }
+      ],
+      "39.0": [
+        {
+          "note": "F5",
+          "time": 39.0,
+          "duration": 1.0
+        }
+      ],
+      "40.0": [
+        {
+          "note": "G5",
+          "time": 40.0,
+          "duration": 1.0
+        }
+      ],
+      "41.0": [
+        {
+          "note": "C5",
+          "time": 41.0,
+          "duration": 0.5
+        }
+      ],
+      "41.5": [
+        {
+          "note": "Eb5",
+          "time": 41.5,
+          "duration": 2.5
+        }
+      ],
+      "44.0": [
+        {
+          "note": "D5",
+          "time": 44.0,
+          "duration": 1.5
+        }
+      ],
+      "45.5": [
+        {
+          "note": "C5",
+          "time": 45.5,
+          "duration": 2.5
+        }
+      ],
+      "48.0": [
+        {
+          "note": "G5",
+          "time": 48.0,
+          "duration": 1.5
+        }
+      ],
+      "49.5": [
+        {
+          "note": "F5",
+          "time": 49.5,
+          "duration": 1.5
+        }
+      ],
+      "51.0": [
+        {
+          "note": "Bb5",
+          "time": 51.0,
+          "duration": 1.0
+        }
+      ],
+      "52.0": [
+        {
+          "note": "F5",
+          "time": 52.0,
+          "duration": 3.0
+        }
+      ],
+      "55.0": [
+        {
+          "note": "F5",
+          "time": 55.0,
+          "duration": 1.0
+        }
+      ],
+      "56.0": [
+        {
+          "note": "G5",
+          "time": 56.0,
+          "duration": 1.0
+        }
+      ],
+      "57.0": [
+        {
+          "note": "C5",
+          "time": 57.0,
+          "duration": 0.5
+        }
+      ],
+      "57.5": [
+        {
+          "note": "Eb5",
+          "time": 57.5,
+          "duration": 2.5
+        }
+      ],
+      "60.0": [
+        {
+          "note": "D5",
+          "time": 60.0,
+          "duration": 1.5
+        }
+      ],
+      "61.5": [
+        {
+          "note": "C5",
+          "time": 61.5,
+          "duration": 2.5
+        }
+      ]
+    }
+  ]
 }

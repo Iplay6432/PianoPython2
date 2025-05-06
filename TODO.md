@@ -3,10 +3,10 @@ A spiritual successor to PianoPython using a different library and also using ja
 
 ### General
 - [x] Integrate Python and Java programs
-- [ ] Add all songs for the levels (3/8)
+- [ ] Add all songs for the levels (5/8)
     - 1: C-major chord
     - 2: Marry Had A Little Lamb  
-    - 3: 8th note scale, through all the octaves, C and F?
+    - 3: 8th note scale, through all the octaves, C and F
     - 4: Chromatic scale?
     - 5: Audiovent simplified?
     - 6: Audiovent

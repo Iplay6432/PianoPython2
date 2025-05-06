@@ -1,7 +1,7 @@
 {
-    "bpm": 60,
-    "name": "All Notes in Three Octaves",
-    "hint":"I wonder what the numbers do and waht the bottom row does?",
+    "bpm": 175,
+    "name": "Chromatic.",
+    "hint":"I wonder what the numbers do and waht the bottom row does? Also, Try going up with right hand, switching octaves and then going up with left hand. Good Luck! You could also try clicking the windows key.",
     "notes": [
         {
             "0": [{ "note": "C3", "time": 0, "duration": 1 }],

@@ -58,10 +58,6 @@ class KeyboardNote(pyglet.shapes.BorderedRectangle):
             self.locked = True
             self.color = (199,0,57)
             self.play()
-        elif octive != self.octive and name == self.note_name:
-            self.locked = False
-            self.color = self.colorr
-            self.stop()
     def key_released(self, note: str): 
         if self.note_name+self.octive == note:
             self.locked = False

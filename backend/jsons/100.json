@@ -1,10 +1,10 @@
 {
     "bpm": 1,
     "name": "Freeplay",
-    "hint":"Why are you reading this, I know my implementation is bad but it works!! If your hearing this C3 its been 230 MILLION YEARS",
+    "hint":"Why are you reading this, I know my implementation is bad but it works!! If your hearing this C4 its been 230 MILLION YEARS, hop of!!",
     "notes": [
         {
-            "9223372036854775807": [{ "note": "C3", "time": 9223372036854775807, "duration": 1 }]
+            "9223372036854775807": [{ "note": "C4", "time": 9223372036854775807, "duration": 1 }]
         }
     ]
 }
