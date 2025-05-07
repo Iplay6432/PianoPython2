@@ -51,7 +51,6 @@ class Levels:
     def get_pos(self):
         return self.pos
     def key_pressed(self, symbol, modifiers):
-        print(symbol)
         if not self.end:
             if(symbol == 65363):
                 self.pos = self.pos + 1 if self.pos < self.LEVELS_PER_PAGE -1 else self.pos
