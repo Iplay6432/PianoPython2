@@ -43,10 +43,21 @@ class KeyboardNote(pyglet.shapes.BorderedRectangle):
         self.start_time = time.time()
         self.threads = []
         self.locked = False
+        self.playing = False
     def set_volume(self, vol: int):
         self.volume = vol
         return self.volume
-
+    def getNote(self):
+        return self.note_name + self.octive
+    def is_note_not_octave(self, note, octave):
+        if note == self.note_name and octave != self.octive:
+            return True
+        else:
+            return False
+    def do_stop(self):
+        self.locked = False
+        self.color= self.colorr
+        self.stop()
     def is_pressed(self, note : str):
         if len(note) == 3:
             octive = note[2]
@@ -63,7 +74,8 @@ class KeyboardNote(pyglet.shapes.BorderedRectangle):
             self.locked = False
             self.color= self.colorr
             self.stop()
-            
+    def is_playing(self):
+        return self.playing
     def play(self):
         self.threads.append(PlayNote(self.sound, self.volume))
         self.threads[-1].start()
@@ -87,6 +99,7 @@ class PlayNote(Thread):
          
         self.player = pyglet.media.Player()
     def run(self):
+        self.playing = True
         self.player.queue(self.sound)
         self.player.volume = self.volume
         self.player.play()
@@ -98,6 +111,7 @@ class PlayNote(Thread):
         return self.max_vol / (1 + 2.718 ** (4*(timee-(curr- self.start_time))))
 
     def stop(self):
+        self.playing = False
         curr = time.time()
         descent_time = time.time()
         if curr-self.start_time < .1:

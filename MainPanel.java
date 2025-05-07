@@ -40,19 +40,18 @@ public class MainPanel extends JPanel {
     }
 
     private void instruct() {
-        JOptionPane.showMessageDialog(null, "Controls:\r\n" + //
-                "\r\n" + //
-                "- Navigate with arrow keys and enter\r\n" +
-                "- Press h on level screen for hints \r\n" +
+        JOptionPane.showMessageDialog(null, "- Navigate with arrow keys, enter, and esc\r\n" + //
                 "- Escape → go back / exit (on title screen)\r\n" + //
                 "- Keys s-k → play in current octave, white notes\r\n" + //
                 "- Keys e, r, y, u, i → play in current octave, black notes\r\n" + //
-                "- Keys z-m → play octave below if not at lowest octave, if it is play octave up, white notes\r\n"
-                + //
-                "- Keys 2-6 → play octave below if not at lowest octave, if it is play octave up, black notes\r\n"
-                + //
+                "- Keys z-m → play octave below if not at lowest octave, if it is play octave up, white notes\r\n" + //
+                "- Keys 2-6 → play octave below if not at lowest octave, if it is play octave up, black notes\r\n" + //
                 "- Space → move up 1 octave\r\n" + //
-                "- Left Alt → move down 1 octave ");
+                "- Left alt → move down 1 octave\r\n" + //
+                "- When holding shift and using the alternative notes\r\n" + //
+                "    - if octave is 3 than it will play notes two octaves up\r\n" + //
+                "    - if octave is 4 than it will play notes an octave up\r\n" + //
+                "    - if octave is 5 it will play notes 2 octaves down");
     }
 
     public void start() {

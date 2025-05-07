@@ -38,7 +38,6 @@ def _server():
                 t.sleep(0.01)
                 _server()
     if m == "1":
-        print("freeplay")
         action(game.freeplay)
         while True:
             t.sleep(0.01)

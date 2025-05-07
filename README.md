@@ -24,4 +24,8 @@ Controls:
 - Keys z-m &rarr; play octave below if not at lowest octave, if it is play octave up, white notes
 - Keys 2-6 &rarr; play octave below if not at lowest octave, if it is play octave up, black notes
 - Space &rarr; move up 1 octave
-- Left Alt &rarr; move down 1 octave 
+- Left alt &rarr; move down 1 octave
+- When holding shift and using the alternative notes
+    - if octave is 3 than it will play notes two octaves up
+    - if octave is 4 than it will play notes an octave up
+    - if octave is 5 it will play notes 2 octaves down

@@ -19,7 +19,7 @@ class PianoKeyboard:
         Black = ["Db", "Eb", "Gb", "Ab", "Bb"]
         Octive = ["3", "4", "5"]
         self.octive  = 4
-        self.last_octive = 3 
+        self.last_octive = 4
         o=0
         temp = []
         with open("settings.txt", "r") as f:
@@ -87,45 +87,72 @@ class PianoKeyboard:
         pyglet.text.Label("Current Octave: " + str(self.octive) ,font_name="Times New Roman", font_size=self.BLACK_KEY_WIDTH/2, x=self.window.width/100, y = self.window.height/2,anchor_x="left",anchor_y="baseline", color=(0,0,0)).draw()
 
     def key_pressed(self, symbol, modifer):
-        if key.symbol_string(symbol).replace("_", "") in self.keybinds:
-            p = self.keybinds[key.symbol_string(symbol).replace("_", "")]
-            if p == "up":
-                if self.octive < 5:
-                    self.last_octive =self.octive
-                    self.octive+=1
-            if p == "down" and self.octive > 3:
+        key_str = key.symbol_string(symbol).replace("_", "")
+        if key_str in self.keybinds:
+            p = self.keybinds[key_str]
+            if p == "up" and self.octive < 5:
                 self.last_octive = self.octive
-                self.octive-=1
-            if "*" in p:
-                if self.octive ==3:
-                    for note in self.keys:
-                        note.is_pressed(p.replace("*", str(self.octive +1)))
-                    return p.replace("*", str(self.octive +1))
-                else:
-                    for note in self.keys:
-                        note.is_pressed(p.replace("*", str(self.octive -1)))
-                    return p.replace("*", str(self.octive -1))
-            elif p != "up" and p != "down":
+                self.octive += 1
+            elif p == "down" and self.octive > 3:
+                self.last_octive = self.octive
+                self.octive -= 1
+            elif "*" in p and modifer == 1:
+                change = 0
+                if self.octive == 3:
+                    change = 2
+                elif self.octive == 5:
+                    change = -2
+                elif self.octive == 4:
+                    change = 1
+                target_octave = str(self.octive + change)
+                note_name = p.replace("*", target_octave)
+                self.last_octive = self.octive
                 for note in self.keys:
-                    note.is_pressed(p+str(self.octive))
-                return p +str(self.octive)
-    
+                    if note.getNote() == note_name:
+                        note.is_pressed(note_name)
+                        return note_name
+            elif "*" in p and modifer == 0:
+                change = 0
+                if self.octive == 3:
+                    change = 1
+                elif self.octive == 5:
+                    change = -1
+                elif self.octive == 4:
+                    change = -1
+                target_octave = str(self.octive + change)
+                note_name = p.replace("*", target_octave)
+                for note in self.keys:
+                    if note.getNote()== note_name:
+                        note.is_pressed(note_name)
+                        return note_name
+            else:
+                note_name = p + str(self.octive)
+                for note in self.keys:
+                    if note.getNote() == note_name:
+                        note.is_pressed(note_name)
+                        return note_name
     def key_released(self, symbol, modifer):
         if key.symbol_string(symbol).replace("_", "") in self.keybinds:
-            p = self.keybinds[key.symbol_string(symbol).replace("_", "")]
-            if "*" in p:
-                if self.octive ==3:
+            p = str(self.keybinds[key.symbol_string(symbol).replace("_", "")])
+            if "*" in p and p != "*up" and p != "*down":
+                note_name = ""
+                wrong_octave = self.octive
+                note_name = p.replace("*", "")
+                played_note = ""
+                if self.octive == self.last_octive:
                     for note in self.keys:
-                        note.key_released(p.replace("*", str(self.octive +1)))
-                        # note.key_released(p+str(self.last_octive))
-                    return p.replace("*", str(self.octive +1))
+                        if str(note.octive) != str(self.octive) and note.note_name == note_name:
+                            if note.is_playing():
+                                played_note = note.getNote()
+                            note.do_stop()
+                    return played_note
                 else:
                     for note in self.keys:
-                        note.key_released(p.replace("*", str(self.octive -1)))
-                        # note.key_released(p+str(self.last_octive))
-                    return p.replace("*", str(self.octive -1))
+                        if note.note_name == note_name:
+                            if note.is_playing():
+                                played_note = note.getNote()
+                    return played_note
             elif p != "up" and p != "down":
                 for note in self.keys:
                     note.key_released(p+str(self.octive))
-                    note.key_released(p+str(self.last_octive))
                 return p +str(self.octive)
