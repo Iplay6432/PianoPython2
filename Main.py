@@ -38,13 +38,13 @@ class Main(pyglet.window.Window):
         self.set_visible(True)
     def freeplay(self):
         self.done = False
-        self.happend = False
         del self.game
         del self.levels
-        self.levels = Levels(self, freeplay = True)
+        self.levels = Levels(self)
         self.game = PianoGame(self)
-        self.happend = False
-        self.screenNumber = 0
+        self.game.start("100")
+        self.happend = True
+        self.screenNumber = 1
         self.do_draw = True
         self.set_visible(True)
     def getDone(self):
@@ -67,9 +67,10 @@ class Main(pyglet.window.Window):
                     self.happend = True
                 draw = self.game.draw()
                 if draw[0] == True:
+                    temp = self.levels.get_pos()
                     del self.game
                     del self.levels
-                    self.levels = Levels(self, last_score=draw[1])
+                    self.levels = Levels(self, last_score=draw[1], pos=temp)
                     self.game = PianoGame(self)
                     self.happend = False
                     self.screenNumber = 0 
@@ -80,14 +81,17 @@ class Main(pyglet.window.Window):
                     self.levels.key_pressed(symbol, modifiers)
                 else:
                     self.done = True
-                
             elif int(list(str(self.get_screen()))[0]) == 1:
                 if symbol != 65307: #65307 = esc
                     self.game.key_pressed(symbol, modifiers)
-                else:     
+                elif self.game.get_level() == "100":
+                    self.done = True
+                    self.do_draw = False
+                else:
+                    temp = self.levels.get_pos()     
                     del self.game
                     del self.levels
-                    self.levels = Levels(self)
+                    self.levels = Levels(self, pos = temp)
                     self.game = PianoGame(self)
                     self.happend = False
                     self.screenNumber = 0   

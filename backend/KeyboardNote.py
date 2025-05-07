@@ -44,6 +44,8 @@ class KeyboardNote(pyglet.shapes.BorderedRectangle):
         self.threads = []
         self.locked = False
         self.playing = False
+        self.alt_key = False
+        self.reg_key = False
     def set_volume(self, vol: int):
         self.volume = vol
         return self.volume

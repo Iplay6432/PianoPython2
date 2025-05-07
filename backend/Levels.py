@@ -6,7 +6,7 @@ import time as t
 import threading
 import ctypes
 class Levels:
-    def __init__(self, window, last_score=None, freeplay = False):
+    def __init__(self, window, last_score=None, freeplay = False, pos = 0):
         self.window = window
         
         self.TOTAL_NUMBER_OF_LEVELS = 20
@@ -21,7 +21,7 @@ class Levels:
         self.levels = []
         self.order = [5,6,7,8,1,2,3,4]
         self.zero_order =[4,5,6,7,0,1,2,3]
-        self.pos = 0
+        self.pos = pos
         self.last_score = last_score
         self.freeplay = freeplay
         m = 0
@@ -48,13 +48,20 @@ class Levels:
         if self.win != None:
             self.win.close()
         self.win = None
+    def get_pos(self):
+        return self.pos
     def key_pressed(self, symbol, modifiers):
+        print(symbol)
         if not self.end:
             if(symbol == 65363):
                 self.pos = self.pos + 1 if self.pos < self.LEVELS_PER_PAGE -1 else self.pos
                 self.select(self.pos)
             if(symbol == 65361):
                 self.pos = self.pos -1 if self.pos > 0 else  self.pos
+            if(symbol == 65364):
+                self.pos = self.pos +4 if self.pos < 4 else self.pos
+            if(symbol == 65362):
+                self.pos = self.pos -4 if self.pos > 3 else self.pos
             self.select(self.pos)
         if(symbol  == 65293):
             self.end = True

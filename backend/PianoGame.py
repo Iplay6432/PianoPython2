@@ -48,6 +48,8 @@ class PianoGame:
         if note in self.note_pos:
             index = self.note_pos.index(note)
             self.user_note_times[index][-1][1] = t.time()
+    def get_level(self):
+        return self.level
     def start(self, level):
         self.Start = True
         self.level = level

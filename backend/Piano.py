@@ -14,12 +14,11 @@ class PianoKeyboard:
         self.WHITE_KEY_HEIGHT = window.height / 2
         self.BLACK_KEY_HEIGHT = self.WHITE_KEY_HEIGHT * 0.64
         self.BORDER_WIDTH = int(window.width / 500)
-        self.keys = []
+        self.keys: KeyboardNote = []
         White = ["C", "D", "E", "F", "G", "A", "B"]
         Black = ["Db", "Eb", "Gb", "Ab", "Bb"]
         Octive = ["3", "4", "5"]
         self.octive  = 4
-        self.last_octive = 4
         o=0
         temp = []
         with open("settings.txt", "r") as f:
@@ -91,12 +90,11 @@ class PianoKeyboard:
         if key_str in self.keybinds:
             p = self.keybinds[key_str]
             if p == "up" and self.octive < 5:
-                self.last_octive = self.octive
                 self.octive += 1
             elif p == "down" and self.octive > 3:
-                self.last_octive = self.octive
                 self.octive -= 1
             elif "*" in p and modifer == 1:
+                self.playing = True
                 change = 0
                 if self.octive == 3:
                     change = 2
@@ -106,12 +104,13 @@ class PianoKeyboard:
                     change = 1
                 target_octave = str(self.octive + change)
                 note_name = p.replace("*", target_octave)
-                self.last_octive = self.octive
                 for note in self.keys:
                     if note.getNote() == note_name:
                         note.is_pressed(note_name)
+                        note.alt_key = True
                         return note_name
             elif "*" in p and modifer == 0:
+                self.playing = True
                 change = 0
                 if self.octive == 3:
                     change = 1
@@ -124,11 +123,13 @@ class PianoKeyboard:
                 for note in self.keys:
                     if note.getNote()== note_name:
                         note.is_pressed(note_name)
+                        note.alt_key = True
                         return note_name
             else:
                 note_name = p + str(self.octive)
                 for note in self.keys:
                     if note.getNote() == note_name:
+                        note.reg_key = True
                         note.is_pressed(note_name)
                         return note_name
     def key_released(self, symbol, modifer):
@@ -136,23 +137,19 @@ class PianoKeyboard:
             p = str(self.keybinds[key.symbol_string(symbol).replace("_", "")])
             if "*" in p and p != "*up" and p != "*down":
                 note_name = ""
-                wrong_octave = self.octive
                 note_name = p.replace("*", "")
                 played_note = ""
-                if self.octive == self.last_octive:
-                    for note in self.keys:
-                        if str(note.octive) != str(self.octive) and note.note_name == note_name:
-                            if note.is_playing():
-                                played_note = note.getNote()
-                            note.do_stop()
-                    return played_note
-                else:
-                    for note in self.keys:
+                for note in self.keys:
+                    if note.alt_key:
                         if note.note_name == note_name:
                             if note.is_playing():
                                 played_note = note.getNote()
-                    return played_note
+                                note.alt_key = False
+                            note.do_stop()
+                return played_note
             elif p != "up" and p != "down":
                 for note in self.keys:
-                    note.key_released(p+str(self.octive))
+                    if note.reg_key and note.note_name == p:
+                        note.do_stop()
+                        note.reg_key = False
                 return p +str(self.octive)
