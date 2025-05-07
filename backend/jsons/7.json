@@ -1,45 +1,592 @@
 {
-    "bpm": 60,
-    "name": "All Notes in Three Octaves",
-    "hint":"I wonder what the numbers do and waht the bottom row does?",
-    "notes": [
+  "bpm": 400,
+  "name": "Rush E, Simplifed",
+  "hint": "Make sure to get the switch from octave 4 to 5 down",
+  "notes": [
+    {
+      "0.0": [
         {
-            "0": [{ "note": "C3", "time": 0, "duration": 1 }],
-            "1": [{ "note": "Db3", "time": 1, "duration": 1 }],
-            "2": [{ "note": "D3", "time": 2, "duration": 1 }],
-            "3": [{ "note": "Eb3", "time": 3, "duration": 1 }],
-            "4": [{ "note": "E3", "time": 4, "duration": 1 }],
-            "5": [{ "note": "F3", "time": 5, "duration": 1 }],
-            "6": [{ "note": "Gb3", "time": 6, "duration": 1 }],
-            "7": [{ "note": "G3", "time": 7, "duration": 1 }],
-            "8": [{ "note": "Ab3", "time": 8, "duration": 1 }],
-            "9": [{ "note": "A3", "time": 9, "duration": 1 }],
-            "10": [{ "note": "Bb3", "time": 10, "duration": 1 }],
-            "11": [{ "note": "B3", "time": 11, "duration": 1 }],
-            "12": [{ "note": "C4", "time": 12, "duration": 1 }],
-            "13": [{ "note": "Db4", "time": 13, "duration": 1 }],
-            "14": [{ "note": "D4", "time": 14, "duration": 1 }],
-            "15": [{ "note": "Eb4", "time": 15, "duration": 1 }],
-            "16": [{ "note": "E4", "time": 16, "duration": 1 }],
-            "17": [{ "note": "F4", "time": 17, "duration": 1 }],
-            "18": [{ "note": "Gb4", "time": 18, "duration": 1 }],
-            "19": [{ "note": "G4", "time": 19, "duration": 1 }],
-            "20": [{ "note": "Ab4", "time": 20, "duration": 1 }],
-            "21": [{ "note": "A4", "time": 21, "duration": 1 }],
-            "22": [{ "note": "Bb4", "time": 22, "duration": 1 }],
-            "23": [{ "note": "B4", "time": 23, "duration": 1 }],
-            "24": [{ "note": "C5", "time": 24, "duration": 1 }],
-            "25": [{ "note": "Db5", "time": 25, "duration": 1 }],
-            "26": [{ "note": "D5", "time": 26, "duration": 1 }],
-            "27": [{ "note": "Eb5", "time": 27, "duration": 1 }],
-            "28": [{ "note": "E5", "time": 28, "duration": 1 }],
-            "29": [{ "note": "F5", "time": 29, "duration": 1 }],
-            "30": [{ "note": "Gb5", "time": 30, "duration": 1 }],
-            "31": [{ "note": "G5", "time": 31, "duration": 1 }],
-            "32": [{ "note": "Ab5", "time": 32, "duration": 1 }],
-            "33": [{ "note": "A5", "time": 33, "duration": 1 }],
-            "34": [{ "note": "Bb5", "time": 34, "duration": 1 }],
-            "35": [{ "note": "B5", "time": 35, "duration": 1 }]
+          "note": "E4",
+          "time": 0.0,
+          "duration": 1.0
+        },
+        {
+          "note": "C3",
+          "time": 0.0,
+          "duration": 1.0
+        },
+        {
+          "note": "E3",
+          "time": 0.0,
+          "duration": 1.0
         }
-    ]
+      ],
+      "1.0": [
+        {
+          "note": "E4",
+          "time": 1.0,
+          "duration": 1.0
+        }
+      ],
+      "2.0": [
+        {
+          "note": "E4",
+          "time": 2.0,
+          "duration": 1.0
+        }
+      ],
+      "3.0": [
+        {
+          "note": "E4",
+          "time": 3.0,
+          "duration": 1.0
+        }
+      ],
+      "4.0": [
+        {
+          "note": "E4",
+          "time": 4.0,
+          "duration": 1.0
+        },
+        {
+          "note": "C3",
+          "time": 4.0,
+          "duration": 1.0
+        },
+        {
+          "note": "E3",
+          "time": 4.0,
+          "duration": 1.0
+        }
+      ],
+      "5.0": [
+        {
+          "note": "E4",
+          "time": 5.0,
+          "duration": 1.0
+        }
+      ],
+      "6.0": [
+        {
+          "note": "E4",
+          "time": 6.0,
+          "duration": 1.0
+        }
+      ],
+      "7.0": [
+        {
+          "note": "E4",
+          "time": 7.0,
+          "duration": 1.0
+        }
+      ],
+      "8.0": [
+        {
+          "note": "E4",
+          "time": 8.0,
+          "duration": 1.0
+        },
+        {
+          "note": "E3",
+          "time": 8.0,
+          "duration": 1.0
+        }
+      ],
+      "9.0": [
+        {
+          "note": "E4",
+          "time": 9.0,
+          "duration": 1.0
+        }
+      ],
+      "10.0": [
+        {
+          "note": "E4",
+          "time": 10.0,
+          "duration": 1.0
+        }
+      ],
+      "11.0": [
+        {
+          "note": "E4",
+          "time": 11.0,
+          "duration": 1.0
+        }
+      ],
+      "12.0": [
+        {
+          "note": "E4",
+          "time": 12.0,
+          "duration": 1.0
+        },
+        {
+          "note": "C3",
+          "time": 12.0,
+          "duration": 1.0
+        },
+        {
+          "note": "E3",
+          "time": 12.0,
+          "duration": 1.0
+        }
+      ],
+      "13.0": [
+        {
+          "note": "E4",
+          "time": 13.0,
+          "duration": 1.0
+        }
+      ],
+      "14.0": [
+        {
+          "note": "E4",
+          "time": 14.0,
+          "duration": 1.0
+        }
+      ],
+      "15.0": [
+        {
+          "note": "E4",
+          "time": 15.0,
+          "duration": 1.0
+        }
+      ],
+      "16.0": [
+        {
+          "note": "E4",
+          "time": 16.0,
+          "duration": 1.0
+        },
+        {
+          "note": "C3",
+          "time": 16.0,
+          "duration": 1.0
+        },
+        {
+          "note": "E3",
+          "time": 16.0,
+          "duration": 1.0
+        }
+      ],
+      "17.0": [
+        {
+          "note": "E4",
+          "time": 17.0,
+          "duration": 1.0
+        }
+      ],
+      "18.0": [
+        {
+          "note": "E4",
+          "time": 18.0,
+          "duration": 1.0
+        }
+      ],
+      "19.0": [
+        {
+          "note": "E4",
+          "time": 19.0,
+          "duration": 1.0
+        }
+      ],
+      "20.0": [
+        {
+          "note": "E4",
+          "time": 20.0,
+          "duration": 1.0
+        },
+        {
+          "note": "E3",
+          "time": 20.0,
+          "duration": 1.0
+        }
+      ],
+      "21.0": [
+        {
+          "note": "E4",
+          "time": 21.0,
+          "duration": 1.0
+        }
+      ],
+      "22.0": [
+        {
+          "note": "E4",
+          "time": 22.0,
+          "duration": 1.0
+        }
+      ],
+      "23.0": [
+        {
+          "note": "E4",
+          "time": 23.0,
+          "duration": 1.0
+        }
+      ],
+      "24.0": [
+        {
+          "note": "E4",
+          "time": 24.0,
+          "duration": 1.0
+        },
+        {
+          "note": "C3",
+          "time": 24.0,
+          "duration": 1.0
+        },
+        {
+          "note": "E3",
+          "time": 24.0,
+          "duration": 1.0
+        }
+      ],
+      "25.0": [
+        {
+          "note": "E4",
+          "time": 25.0,
+          "duration": 1.0
+        }
+      ],
+      "26.0": [
+        {
+          "note": "E4",
+          "time": 26.0,
+          "duration": 1.0
+        }
+      ],
+      "27.0": [
+        {
+          "note": "E4",
+          "time": 27.0,
+          "duration": 1.0
+        }
+      ],
+      "28.0": [
+        {
+          "note": "E4",
+          "time": 28.0,
+          "duration": 1.0
+        },
+        {
+          "note": "C3",
+          "time": 28.0,
+          "duration": 1.0
+        },
+        {
+          "note": "E3",
+          "time": 28.0,
+          "duration": 1.0
+        }
+      ],
+      "29.0": [
+        {
+          "note": "E4",
+          "time": 29.0,
+          "duration": 1.0
+        }
+      ],
+      "30.0": [
+        {
+          "note": "E4",
+          "time": 30.0,
+          "duration": 1.0
+        }
+      ],
+      "31.0": [
+        {
+          "note": "E4",
+          "time": 31.0,
+          "duration": 1.0
+        }
+      ],
+      "32.0": [
+        {
+          "note": "E3",
+          "time": 32.0,
+          "duration": 1.0
+        },
+        {
+          "note": "E4",
+          "time": 32.0,
+          "duration": 1.0
+        }
+      ],
+      "33.0": [
+        {
+          "note": "E4",
+          "time": 33.0,
+          "duration": 1.0
+        }
+      ],
+      "34.0": [
+        {
+          "note": "E4",
+          "time": 34.0,
+          "duration": 1.0
+        }
+      ],
+      "35.0": [
+        {
+          "note": "E4",
+          "time": 35.0,
+          "duration": 1.0
+        }
+      ],
+      "36.0": [
+        {
+          "note": "E3",
+          "time": 36.0,
+          "duration": 1.0
+        },
+        {
+          "note": "C3",
+          "time": 36.0,
+          "duration": 1.0
+        },
+        {
+          "note": "E5",
+          "time": 36.0,
+          "duration": 1.0
+        }
+      ],
+      "37.0": [
+        {
+          "note": "F5",
+          "time": 37.0,
+          "duration": 1.0
+        }
+      ],
+      "38.0": [
+        {
+          "note": "E5",
+          "time": 38.0,
+          "duration": 1.0
+        }
+      ],
+      "39.0": [
+        {
+          "note": "Eb5",
+          "time": 39.0,
+          "duration": 1.0
+        }
+      ],
+      "40.0": [
+        {
+          "note": "E3",
+          "time": 40.0,
+          "duration": 1.0
+        },
+        {
+          "note": "C3",
+          "time": 40.0,
+          "duration": 1.0
+        },
+        {
+          "note": "E5",
+          "time": 40.0,
+          "duration": 1.0
+        }
+      ],
+      "41.0": [
+        {
+          "note": "E5",
+          "time": 41.0,
+          "duration": 1.0
+        }
+      ],
+      "42.0": [
+        {
+          "note": "E5",
+          "time": 42.0,
+          "duration": 1.0
+        }
+      ],
+      "43.0": [
+        {
+          "note": "E5",
+          "time": 43.0,
+          "duration": 1.0
+        }
+      ],
+      "44.0": [
+        {
+          "note": "E3",
+          "time": 44.0,
+          "duration": 1.0
+        },
+        {
+          "note": "C3",
+          "time": 44.0,
+          "duration": 1.0
+        },
+        {
+          "note": "E5",
+          "time": 44.0,
+          "duration": 1.0
+        }
+      ],
+      "45.0": [
+        {
+          "note": "F5",
+          "time": 45.0,
+          "duration": 1.0
+        }
+      ],
+      "46.0": [
+        {
+          "note": "E5",
+          "time": 46.0,
+          "duration": 1.0
+        }
+      ],
+      "47.0": [
+        {
+          "note": "Eb5",
+          "time": 47.0,
+          "duration": 1.0
+        }
+      ],
+      "48.0": [
+        {
+          "note": "E3",
+          "time": 48.0,
+          "duration": 1.0
+        },
+        {
+          "note": "E5",
+          "time": 48.0,
+          "duration": 1.0
+        }
+      ],
+      "49.0": [
+        {
+          "note": "E5",
+          "time": 49.0,
+          "duration": 1.0
+        }
+      ],
+      "50.0": [
+        {
+          "note": "E5",
+          "time": 50.0,
+          "duration": 1.0
+        }
+      ],
+      "51.0": [
+        {
+          "note": "E5",
+          "time": 51.0,
+          "duration": 1.0
+        }
+      ],
+      "52.0": [
+        {
+          "note": "C3",
+          "time": 52.0,
+          "duration": 1.0
+        },
+        {
+          "note": "E3",
+          "time": 52.0,
+          "duration": 1.0
+        },
+        {
+          "note": "E5",
+          "time": 52.0,
+          "duration": 1.0
+        }
+      ],
+      "53.0": [
+        {
+          "note": "F5",
+          "time": 53.0,
+          "duration": 1.0
+        }
+      ],
+      "54.0": [
+        {
+          "note": "E5",
+          "time": 54.0,
+          "duration": 1.0
+        }
+      ],
+      "55.0": [
+        {
+          "note": "Eb5",
+          "time": 55.0,
+          "duration": 1.0
+        }
+      ],
+      "56.0": [
+        {
+          "note": "C3",
+          "time": 56.0,
+          "duration": 1.0
+        },
+        {
+          "note": "E3",
+          "time": 56.0,
+          "duration": 1.0
+        },
+        {
+          "note": "E5",
+          "time": 56.0,
+          "duration": 1.0
+        }
+      ],
+      "57.0": [
+        {
+          "note": "E5",
+          "time": 57.0,
+          "duration": 1.0
+        }
+      ],
+      "58.0": [
+        {
+          "note": "E5",
+          "time": 58.0,
+          "duration": 1.0
+        }
+      ],
+      "59.0": [
+        {
+          "note": "E5",
+          "time": 59.0,
+          "duration": 1.0
+        }
+      ],
+      "60.0": [
+        {
+          "note": "E5",
+          "time": 60.0,
+          "duration": 1.0
+        }
+      ],
+      "61.0": [
+        {
+          "note": "E3",
+          "time": 61.0,
+          "duration": 1.0
+        },
+        {
+          "note": "F5",
+          "time": 61.0,
+          "duration": 1.0
+        }
+      ],
+      "62.0": [
+        {
+          "note": "E5",
+          "time": 62.0,
+          "duration": 1.0
+        }
+      ],
+      "63.0": [
+        {
+          "note": "Eb5",
+          "time": 63.0,
+          "duration": 1.0
+        }
+      ]
+    }
+  ]
 }
