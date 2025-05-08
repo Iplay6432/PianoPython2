@@ -5,13 +5,13 @@ from backend.PianoGame import PianoGame
 
 
 class Main(pyglet.window.Window):
-    def __init__(self):
+    def __init__(self, root):
         super().__init__(fullscreen=True)
-
+        self.root = root
         self.label = pyglet.text.Label("Main Window", x=10, y=self.height - 20)
         self.set_visible(False)
         self.levels = Levels(self)
-        self.game = PianoGame(self)
+        self.game = PianoGame(self, root)
         self.screenNumber = 0
         self.happend = False
         self.do_draw = False
@@ -20,7 +20,7 @@ class Main(pyglet.window.Window):
         del self.game
         del self.levels
         self.levels = Levels(self)
-        self.game = PianoGame(self)
+        self.game = PianoGame(self, self.root)
         self.happend = False
         self.screenNumber = 0
         self.do_draw = False
@@ -31,7 +31,7 @@ class Main(pyglet.window.Window):
         del self.game
         del self.levels
         self.levels = Levels(self)
-        self.game = PianoGame(self)
+        self.game = PianoGame(self, self.root)
         self.happend = False
         self.screenNumber = 0
         self.do_draw = True
@@ -41,7 +41,7 @@ class Main(pyglet.window.Window):
         del self.game
         del self.levels
         self.levels = Levels(self)
-        self.game = PianoGame(self)
+        self.game = PianoGame(self, self.root)
         self.game.start("100")
         self.happend = True
         self.screenNumber = 1
@@ -71,7 +71,7 @@ class Main(pyglet.window.Window):
                     del self.game
                     del self.levels
                     self.levels = Levels(self, last_score=draw[1], pos=temp)
-                    self.game = PianoGame(self)
+                    self.game = PianoGame(self, self.root)
                     self.happend = False
                     self.screenNumber = 0 
     def on_key_press(self, symbol, modifiers):
@@ -92,7 +92,7 @@ class Main(pyglet.window.Window):
                     del self.game
                     del self.levels
                     self.levels = Levels(self, pos = temp)
-                    self.game = PianoGame(self)
+                    self.game = PianoGame(self, self.root)
                     self.happend = False
                     self.screenNumber = 0   
     def on_key_release(self, symbol, modifiers):

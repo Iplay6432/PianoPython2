@@ -4,8 +4,14 @@ import time as t
 import pyglet
 import json
 import random
-# top space i
-# s 1 mesures! all in 4/4 may implement others later
+import sys
+import os
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
 class FaillingNote(pyglet.shapes.BorderedRectangle):
     def __init__(self, note: str, height: float, width: int,
                  border_width: int,vol=1,color=(255, 255, 255),
@@ -19,7 +25,7 @@ class FaillingNote(pyglet.shapes.BorderedRectangle):
         self.pixel_per_beat = self.screen_height / 8.0
         visual_height = float(durr) *self.pixel_per_beat
         
-        with open("backend/data/note_pos.json", "r") as file:
+        with open(resource_path("backend/data/note_pos.json"), "r") as file:
             data = json.load(file)
             x = (data[note]-1)*width
             file.close()
@@ -84,7 +90,7 @@ class FaillingNote(pyglet.shapes.BorderedRectangle):
                 self.done = False
                 return False
     def play(self):
-        sound = pyglet.media.load(f"backend/notes/{self.note}{self.octive}.wav")
+        sound = pyglet.media.load(resource_path(f"backend/notes/{self.note}{self.octive}.wav"))
         durr = 60 / self.bpm * self.durr
         self.thread = Thread(
             target=self._play,

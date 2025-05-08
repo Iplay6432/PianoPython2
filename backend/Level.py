@@ -1,6 +1,14 @@
 from pyglet import shapes, text
 import pyglet
 import json
+import sys
+import os
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
 class Level:    
     def __init__(self, level: int, x: float, y:float , radius: float, size: float):
         self.color = (255,255,255)
@@ -13,14 +21,14 @@ class Level:
         self.text_color =(0,0,0)
         self.stars = [None,None,None,None,None]
         self.hint = "Oh well, No hint for you!"
-        with open(f"backend/jsons/{self.level}.json", "r") as f:
+        with open(resource_path(f"backend/jsons/{self.level}.json"), "r") as f:
            data = json.load(f)
            self.hint = data["hint"]
            self.level_name =  data["name"]
            f.close()
         best_score = "Not Played Yet"
         score =0
-        with open("backend/data/data.json", "r") as f:
+        with open(resource_path("backend/data/data.json"), "r") as f:
             data = json.load(f)
             if self.level in data["levels"]:
                 score=data["levels"][self.level]["accuracy"]
@@ -41,7 +49,7 @@ class Level:
     def getHint(self) -> str:
         return self.hint
     def update(self):
-        with open(f"backend/jsons/{self.level}.json", "r") as f:
+        with open(resource_path(f"backend/jsons/{self.level}.json"), "r") as f:
            data = json.load(f)
            self.level_name =  data["name"]
            f.close()
@@ -50,7 +58,7 @@ class Level:
         x = self.x
         y= self.y
         size = self.LEVEL_SIZE
-        with open("backend/data/data.json", "r") as f:
+        with open(resource_path("backend/data/data.json"), "r") as f:
             data = json.load(f)
             if self.level in data["levels"]:
                 score =data["levels"][self.level]["accuracy"]

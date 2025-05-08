@@ -5,10 +5,18 @@ from backend.Piano import PianoKeyboard
 import backend.FallingNote as fn 
 import pyglet.window.key as key
 import time as t
-# top space is 1 mesures!
-# always in 4/4, may implement others later
+import sys
+import os
+import zipfile
 class PianoGame:
-    def __init__(self, window):
+    def resource_path(self, relative_path):
+        try:
+            base_path = sys._MEIPASS
+        except Exception:
+            base_path = os.path.abspath(".")
+        return os.path.join(base_path, relative_path)
+
+    def __init__(self, window, root):
         self.window = window
         self.OCTIVES = 3
         self.WHITE_KEY_WIDTH = window.width / (7 * self.OCTIVES)
@@ -20,15 +28,16 @@ class PianoGame:
         self.level = 1
         self.level_data = None
         self.notes = []
-        self.p = PianoKeyboard(self.window)
+        self.p = PianoKeyboard(self.window, root)
         self.bpm = 0
         self.fps_display = pyglet.window.FPSDisplay(window=self.window)
         self.beat = 0
         self.last_beat = 0
         self.notes_done = 0
-        temp = []   
-        with open("settings.txt", "r") as f:
-            for line in f.readlines():
+        temp = []
+        path = os.path.join(root, "settings.txt")
+        with open(path, "r") as file:
+            for line in file.readlines():
                 temp.append(float(line.strip()))
         self.volume = temp[0]
     def stop(self):
@@ -54,7 +63,7 @@ class PianoGame:
         self.Start = True
         self.level = level
         self.done = False
-        with open (f"backend/jsons/{self.level}.json", "r") as file:
+        with open (self.resource_path(f"backend/jsons/{self.level}.json"), "r") as file:
             self.level_data = json.load(file)
             file.close()
         self.bpm = self.level_data["bpm"]
@@ -70,7 +79,7 @@ class PianoGame:
         self.game_note_times = []
         self.user_note_times = []
         
-        with open("backend/data/note_pos.json", "r") as file:
+        with open(self.resource_path("backend/data/note_pos.json"), "r") as file:
             self.note_pos = json.load(file)
             self.note_pos = list(self.note_pos.items())
             file.close()
@@ -111,7 +120,7 @@ class PianoGame:
             score = ((total/len(scores)))
             score = 1 if score > 1 else score
             data: json
-            with open("backend/data/data.json", "r") as f:
+            with open(self.resource_path("backend/data/data.json"), "r") as f:
                 data = json.load(f)
                 f.close()
             if self.og_level in data["levels"]:
@@ -121,7 +130,7 @@ class PianoGame:
             else:
                 new_data = {"done": 1, "accuracy": score}
                 data["levels"][self.og_level] = new_data
-            with open ("backend/data/data.json", "w") as f:
+            with open (self.resource_path("backend/data/data.json"), "w") as f:
                 json.dump(data,f)
                 f.close()
             return (True, str(round(score*100, 1)) + "%")

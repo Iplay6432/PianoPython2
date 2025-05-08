@@ -1,6 +1,14 @@
 from threading import Thread
 import pyglet
 import time
+import sys
+import os
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
 
 class KeyboardNote(pyglet.shapes.BorderedRectangle):
     def __init__(
@@ -38,7 +46,7 @@ class KeyboardNote(pyglet.shapes.BorderedRectangle):
             self.octive = note[1]
             self.note_name = note[0]
         self.sound = pyglet.media.load(
-            f"backend/notes/{self.note_name}{self.octive}.wav", streaming=False
+            resource_path(f"backend/notes/{self.note_name}{self.octive}.wav"), streaming=False
         )
         self.start_time = time.time()
         self.threads = []

@@ -5,8 +5,18 @@ import json
 import pyglet.window.key as key
 import time
 from backend.KeyboardNote import KeyboardNote
+import zipfile
+import sys
+import os
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
+
 class PianoKeyboard:
-    def __init__(self, window):
+    def __init__(self, window, root):
         self.window = window
         self.OCTIVES = 3
         self.WHITE_KEY_WIDTH = window.width / (7 * self.OCTIVES)
@@ -21,11 +31,12 @@ class PianoKeyboard:
         self.octive  = 4
         o=0
         temp = []
-        with open("settings.txt", "r") as f:
-            for line in f.readlines():
+        path = os.path.join(root, "settings.txt")
+        with open(path, "r") as file:
+            for line in file.readlines():
                 temp.append(float(line.strip()))
         self.volume = temp[1]
-        with open("backend/data/keybinds.json", "r") as file:
+        with open(resource_path("backend/data/keybinds.json"), "r") as file:
             self.keybinds = json.load(file)
             file.close()
         for i in range(self.OCTIVES * 7):  # white keys
