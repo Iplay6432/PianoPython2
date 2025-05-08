@@ -84,21 +84,18 @@ public String getState() // returns  the state
 ```java
 public void setState(String s) // sets the state
 ```
-```java
-
-```
-```java
-```
 #### Focus Class
 ```java 
 private class Focus implements FocusListener
 ```
 ##### Methods
 ```java
-public void focusGained(java.awt.event.FocusEvent e) // method executes when ever focus of the panel was lost
+public void focusGained(java.awt.event.FocusEvent e) /* method executes when ever focus 
+of the panel was lost */
 ```
 ```java
-public void focusLost(java.awt.event.FocusEvent e) // runs when ever focus is lost, in this method it request focus after focus is lost to fix a bug
+public void focusLost(java.awt.event.FocusEvent e) /* runs when ever focus is lost
+this method requests focus after it is lost to fix a bug */
 ```
 
 #### Key Class
@@ -107,7 +104,9 @@ private class Key extends KeyAdapter
 ```
 ##### Methods
 ```java
-public void keyPressed(KeyEvent e) // runs whenever a key is pressed, if the key is "esc" than asks user if they want to save the data and returns to title screen
+public void keyPressed(KeyEvent e) /* runs whenever a key is pressed, 
+if the key is "esc" than asks user if they want to save 
+the data and returns to title screen */
 ```
 
 
