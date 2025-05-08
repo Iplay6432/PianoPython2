@@ -1,4 +1,3 @@
-// not my code but im so glad it exists!
 /*
  * [RoundPolygon.java]
  *

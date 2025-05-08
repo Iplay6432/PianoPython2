@@ -37,6 +37,7 @@ public class SettingPanel extends JPanel {
                 set[i] = (int) ((Double.parseDouble(s.nextLine())) * 100.0);
                 i += 1;
             }
+            s.close();
         } catch (IOException e) {
             System.out.println(e);
         }
