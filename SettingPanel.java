@@ -78,6 +78,8 @@ public class SettingPanel extends JPanel {
                         System.out.println(n);
                         state = 1;
                     }
+                } else {
+                    state = 1;
                 }
             }
         }
