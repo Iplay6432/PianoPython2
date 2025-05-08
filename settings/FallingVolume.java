@@ -12,7 +12,7 @@ public class FallingVolume extends Setting<Double> {
     private JLabel label;
     private int FONT_SIZE;
 
-    public FallingVolume(int width, int height) {
+    public FallingVolume(int width, int height, int val) {
         super();
         int FONT_WIDTH = height / 30;
         FONT_SIZE = (int) (96.0 * FONT_WIDTH / Toolkit.getDefaultToolkit().getScreenResolution());
@@ -23,6 +23,7 @@ public class FallingVolume extends Setting<Double> {
         label.setFont(new Font("Times New Roman", Font.BOLD, FONT_SIZE));
 
         slider = new JSlider(0, 100, 100);
+        slider.setValue(val);
         p.add(label);
         p.add(slider);
         p.setBorder(BorderFactory.createEmptyBorder(height / 50, width / 50, height / 50, width / 50));

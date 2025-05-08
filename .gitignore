@@ -201,3 +201,5 @@ replay_pid*
 *.ini
 /songmaker
 PianoRoll.py
+played
+/backend/data/data.json

@@ -4,6 +4,18 @@ import pyglet
 import threading
 import time as t
 import os
+import json as j
+
+if not os.path.isfile("backend/data/data.json"):
+    fp = "backend/data/data.json"
+    data = {
+        "levels":{}
+    }
+    json = j.dumps(data)
+    with open("backend/data/data.json", "w") as f:
+        f.write(json)
+        f.close() 
+            
 game = Main()
 host = "127.0.0.1"
 port = 12345
