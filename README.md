@@ -19,13 +19,14 @@ git clone https://github.com/Iplay6432/PianoPython2.git
 cd PianoPython2
 pip install -r requirements.txt
 ```
-### To Install via Releases (In Progress)
-Download and extract zip file, cd into zip file
-```bash 
-pip install -r requirements.txt
-```
+### To Run and Install via Releases
+Download and extract zip file
+Double click both the Main.jar and the PianoPythonApp.exe
+You are good to play!!
 ## Running the program
-### On windows
+> [!WARNING]  
+> All the commands below wont work if you downloaded from the latest release, all you have to do is run both the .jar and .exe  
+### On Windows
 ```bash
 ./start.bat
 ```
