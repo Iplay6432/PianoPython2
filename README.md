@@ -10,7 +10,9 @@ The Class RoundPolygon.java was made by [Roedy Green at Canadian Mind Products](
 [![wakatime](https://wakatime.com/badge/user/5e0929d5-6c04-4390-b85f-6ed88b81a995/project/1544bf01-e84d-4ea5-bfb8-c9f39b50d72d.svg)](https://wakatime.com/badge/user/5e0929d5-6c04-4390-b85f-6ed88b81a995/project/1544bf01-e84d-4ea5-bfb8-c9f39b50d72d)
 
 ## Requirements
-Tested on python v3.13.1 and java 23 but should work with the same requirements for pyglet and swing
+> [!NOTE]  
+> If your using the precompiiled version from the realease tabs at least Java 23 is currently required because it was compiled using Java 23
+Tested on Python v3.13.1 and Java 23 but should work with the same requirements for pyglet and swing
 
 ## Installation
 ### To Install Using Git
@@ -25,7 +27,7 @@ Double click both the Main.jar and the PianoPythonApp.exe
 You are good to play!!
 ## Running the program
 > [!WARNING]  
-> All the commands below wont work if you downloaded from the latest release, all you have to do is run both the .jar and .exe  
+> All the commands below wont work if you downloaded from the latest release, all you have to do is run both the .jar and .exe files
 ### On Windows
 ```bash
 ./start.bat
