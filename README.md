@@ -12,6 +12,7 @@ The Class RoundPolygon.java was made by [Roedy Green at Canadian Mind Products](
 ## Requirements
 > [!NOTE]  
 > If your using the precompiiled version from the realease tabs at least Java 23 is currently required because it was compiled using Java 23
+
 Tested on Python v3.13.1 and Java 23 but should work with the same requirements for pyglet and swing
 
 ## Installation
