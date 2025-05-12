@@ -29,6 +29,10 @@ You are good to play!!
 ## Running the program
 > [!WARNING]  
 > All the commands below wont work if you downloaded from the latest release, all you have to do is run both the .jar and .exe files
+
+
+> [!NOTE]
+> If you are using jGrasp to run the program from the downloaded releases run the jgrasp.java file
 ### On Windows
 ```bash
 ./start.bat
